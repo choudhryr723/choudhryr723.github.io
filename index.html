@@ -33,13 +33,16 @@
   body::before { content: ''; position: fixed; inset: 0; background-image: linear-gradient(rgba(84,197,248,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(84,197,248,0.025) 1px, transparent 1px); background-size: 60px 60px; pointer-events: none; z-index: 0; }
 
   nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; height: 56px; background: rgba(8,12,16,0.88); backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); }
-  .nav-logo { font-family: var(--font-display); font-weight: 700; font-size: 16px; color: var(--flutter-blue); letter-spacing: -0.3px; }
+  .nav-logo { font-family: var(--font-display); font-weight: 700; font-size: 16px; color: var(--flutter-blue); letter-spacing: -0.3px; text-decoration: none; }
   .nav-logo span { color: var(--text-muted); font-weight: 400; }
   .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
   .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 13px; font-weight: 500; transition: color 0.2s; }
   .nav-links a:hover { color: var(--flutter-blue); }
   .nav-cta { background: var(--flutter-blue); color: #000 !important; padding: 6px 14px; border-radius: 4px; font-weight: 700; }
   .nav-cta:hover { opacity: 0.82 !important; }
+  .nav-resume { color: var(--flutter-blue) !important; font-weight: 600; }
+  .nav-toggle { display: none; background: none; border: 1px solid var(--border); color: var(--text); width: 40px; height: 36px; border-radius: 6px; cursor: pointer; font-size: 18px; line-height: 1; }
+  .nav-toggle:hover { border-color: var(--flutter-blue); color: var(--flutter-blue); }
 
   .hero { position: relative; min-height: 80vh; display: flex; align-items: center; padding: 120px 40px 80px; max-width: 900px; margin: 0 auto; }
   .hero-left { flex: 1; z-index: 1; max-width: 700px; }
@@ -137,7 +140,13 @@
   ::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}::-webkit-scrollbar-thumb:hover{background:var(--flutter-blue)}
 
   @media(max-width:900px){
-    nav{padding:0 20px}.nav-links{display:none}
+    nav{padding:0 20px;flex-wrap:wrap;height:auto;min-height:56px}
+    .nav-toggle{display:flex;align-items:center;justify-content:center}
+    .nav-links{display:none;flex-direction:column;align-items:stretch;gap:0;width:100%;padding:12px 0 16px;border-top:1px solid var(--border);margin-top:12px}
+    .nav-links.is-open{display:flex}
+    .nav-links li{width:100%}
+    .nav-links a{display:block;padding:12px 4px;font-size:14px}
+    .nav-cta{text-align:center;margin-top:4px}
     .hero{padding:80px 20px 40px}
     section{padding:52px 20px}.contact-grid{grid-template-columns:1fr;gap:28px}.projects-grid{grid-template-columns:1fr}
     .exp-grid{grid-template-columns:1fr !important}
@@ -150,16 +159,17 @@
 <div class="orb orb-2"></div>
 
 <!-- NAV -->
-<nav>
-  <div class="nav-logo">flutter<span>.</span>dev <span>/ Rakesh Kumar Choudhary</span></div>
-  <ul class="nav-links">
+<nav id="top">
+  <a href="#top" class="nav-logo">flutter<span>.</span>dev <span>/ Rakesh Kumar Choudhary</span></a>
+  <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">☰</button>
+  <ul class="nav-links" id="nav-links">
     <li><a href="#skills">Skills</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#achievements">Achievements</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="https://docs.google.com/document/d/1Pu0ArSAZ2Hwm7P7tAhbhov8xY5bhCmfJoWnfa2lHb24/edit?usp=sharing" target="_blank" style="color:var(--flutter-blue);font-weight:600;">View Resume</a></li>
-    <li><a href="https://github.com/choudhryr723" target="_blank" class="nav-cta">Hire Me →</a></li>
+    <li><a href="https://docs.google.com/document/d/1Pu0ArSAZ2Hwm7P7tAhbhov8xY5bhCmfJoWnfa2lHb24/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="nav-resume">Resume</a></li>
+    <li><a href="https://github.com/choudhryr723" target="_blank" rel="noopener noreferrer" class="nav-cta">Hire Me →</a></li>
   </ul>
 </nav>
 
@@ -181,11 +191,11 @@
     <div class="hero-actions fade-in">
 
       <!-- Resume -->
-      <a href="https://docs.google.com/document/d/1Pu0ArSAZ2Hwm7P7tAhbhov8xY5bhCmfJoWnfa2lHb24/edit?usp=sharing" target="_blank" class="btn btn-ghost">
+      <a href="https://docs.google.com/document/d/1Pu0ArSAZ2Hwm7P7tAhbhov8xY5bhCmfJoWnfa2lHb24/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
           <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM6 20V4h5v7h7v9H6z"/>
         </svg>
-        Download Resume
+        View Resume
       </a>
 
       <!-- GitHub -->
@@ -526,6 +536,11 @@
         <div class="contact-icon">📍</div>
         <span>Jaipur, Rajasthan, India</span>
       </div>
+
+      <div class="contact-item">
+        <div class="contact-icon">📄</div>
+        <a href="https://docs.google.com/document/d/1Pu0ArSAZ2Hwm7P7tAhbhov8xY5bhCmfJoWnfa2lHb24/edit?usp=sharing" target="_blank" rel="noopener noreferrer">View Resume (Google Docs)</a>
+      </div>
     </div>
 
     <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px">
@@ -554,7 +569,7 @@
       </div>
 
       <div style="margin-top:24px;display:flex;gap:10px">
-        <a href="https://docs.google.com/document/d/1Pu0ArSAZ2Hwm7P7tAhbhov8xY5bhCmfJoWnfa2lHb24/edit?usp=sharing" target="_blank" class="btn btn-ghost" style="flex:1;justify-content:center">
+        <a href="https://docs.google.com/document/d/1Pu0ArSAZ2Hwm7P7tAhbhov8xY5bhCmfJoWnfa2lHb24/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" style="flex:1;justify-content:center">
           📄 Resume
         </a>
         <a href="mailto:choudharyr723@gmail.com" class="btn btn-primary" style="flex:1;justify-content:center">
@@ -569,6 +584,32 @@
   <p>Built with ❤️ — <strong style="color:var(--flutter-blue)">Rakesh Kumar Choudhary</strong> · Senior Flutter Developer · Jaipur, India · 2026</p>
   <p style="margin-top:5px">© 2026 Rakesh Kumar Choudhary &nbsp;·&nbsp; <a href="mailto:choudharyr723@gmail.com">choudharyr723@gmail.com</a></p>
 </footer>
+
+<script>
+(function () {
+  var toggle = document.getElementById('nav-toggle');
+  var links = document.getElementById('nav-links');
+  if (!toggle || !links) return;
+
+  function setOpen(open) {
+    links.classList.toggle('is-open', open);
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    toggle.textContent = open ? '✕' : '☰';
+  }
+
+  toggle.addEventListener('click', function () {
+    setOpen(!links.classList.contains('is-open'));
+  });
+
+  links.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', function () {
+      if (!a.getAttribute('href').startsWith('#')) return;
+      setOpen(false);
+    });
+  });
+})();
+</script>
 
 </body>
 </html>
