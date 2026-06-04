@@ -299,8 +299,9 @@
     <div class="project-card">
       <div class="project-top">
         <div class="project-icon">🤝</div>
+        <div class="project-links"><a href="https://play.google.com/store/apps/details?id=com.rayz.bcpl&amp;pcampaignid=web_share" target="_blank" rel="noopener noreferrer">Play Store ↗</a></div>
       </div>
-      <div class="project-name">VIP Club RJ — Channel Partner</div>
+      <div class="project-name"><a href="https://play.google.com/store/apps/details?id=com.rayz.bcpl&amp;pcampaignid=web_share" target="_blank" rel="noopener noreferrer">VIP Club RJ — Channel Partner</a></div>
       <div class="project-desc">Secure cross-platform communication app for Vivo's channel partners, operational on both mobile and desktop. Optimized for low-bandwidth networks ensuring reliability without subscription dependency.</div>
       <div class="skill-tags" style="margin-bottom:12px"><span class="tag tag-blue">Flutter</span><span class="tag tag-purple">BLoC</span><span class="tag tag-blue">Dio</span><span class="tag tag-purple">Clean Architecture</span></div>
       <div class="project-meta"><div style="display:flex;align-items:center;gap:4px"><span class="lang-dot" style="background:#54C5F8"></span>Dart</div><div>Production · Mobile + Desktop</div></div>
