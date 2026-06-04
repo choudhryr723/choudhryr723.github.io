@@ -89,6 +89,8 @@
   .project-links a { color: var(--text-dim); text-decoration: none; font-size: 11px; transition: color 0.2s; }
   .project-links a:hover { color: var(--flutter-blue); }
   .project-name { font-family: var(--font-display); font-weight: 700; font-size: 16px; color: var(--flutter-blue); margin-bottom: 6px; }
+  .project-name a { color: inherit; text-decoration: none; transition: color 0.2s; }
+  .project-name a:hover { color: var(--accent2); text-decoration: underline; }
   .project-desc { color: var(--text-muted); font-size: 12.5px; line-height: 1.7; margin-bottom: 14px; }
   .project-meta { display: flex; align-items: center; gap: 14px; font-size: 11px; color: var(--text-dim); border-top: 1px solid var(--border); padding-top: 12px; }
   .lang-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
@@ -285,8 +287,9 @@
     <div class="project-card">
       <div class="project-top">
         <div class="project-icon">🫁</div>
+        <div class="project-links"><a href="https://sonoek-patient-dashboard-uvqgj.ondigitalocean.app/" target="_blank" rel="noopener noreferrer">Live Demo ↗</a></div>
       </div>
-      <div class="project-name">Sonohaler — Smart Inhaler</div>
+      <div class="project-name"><a href="https://sonoek-patient-dashboard-uvqgj.ondigitalocean.app/" target="_blank" rel="noopener noreferrer">Sonohaler — Smart Inhaler</a></div>
       <div class="project-desc">Healthcare web app enabling patients to track medication usage, set reminders, and share usage data with providers. Complex async flows via Redux Thunk with a responsive Tailwind UI.</div>
       <div class="skill-tags" style="margin-bottom:12px"><span class="tag tag-green">React.js</span><span class="tag tag-green">Redux Toolkit</span><span class="tag tag-green">Tailwind CSS</span><span class="tag tag-green">Axios</span></div>
       <div class="project-meta"><div style="display:flex;align-items:center;gap:4px"><span class="lang-dot" style="background:#3fb950"></span>JavaScript</div><div>Production</div></div>
