@@ -6,614 +6,918 @@
 <title>Rakesh Kumar Choudhary — Senior Flutter Developer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Syne:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #080c10;
-    --surface: #0d1117;
-    --surface2: #161b22;
-    --border: #21262d;
-    --flutter-blue: #54C5F8;
-    --flutter-sky: #01BFFD;
-    --flutter-teal: #00B4AB;
-    --accent2: #7ee8fa;
-    --text: #e6edf3;
-    --text-muted: #7d8590;
-    --text-dim: #484f58;
-    --green: #3fb950;
-    --yellow: #d29922;
-    --red: #f85149;
-    --purple: #a371f7;
-    --font-mono: 'DM Mono', 'Courier New', monospace;
-    --font-display: 'Inter', system-ui, sans-serif;
+    --bg: #f3efe6;
+    --bg-2: #ebe4d6;
+    --ink: #151914;
+    --muted: #5c6358;
+    --dim: #8a9184;
+    --line: rgba(21, 25, 20, 0.12);
+    --accent: #0f766e;
+    --accent-2: #0d9488;
+    --surface: rgba(255, 252, 246, 0.72);
+    --font-display: 'Syne', sans-serif;
+    --font-serif: 'Instrument Serif', Georgia, serif;
+    --font-body: 'IBM Plex Sans', sans-serif;
+    --max: 1120px;
   }
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
-  body { background: var(--bg); color: var(--text); font-family: var(--font-display); font-size: 14px; line-height: 1.7; overflow-x: hidden; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; }
-  body::before { content: ''; position: fixed; inset: 0; background-image: linear-gradient(rgba(84,197,248,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(84,197,248,0.025) 1px, transparent 1px); background-size: 60px 60px; pointer-events: none; z-index: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 50% at 10% -10%, rgba(15, 118, 110, 0.16), transparent 55%),
+      radial-gradient(ellipse 60% 40% at 90% 10%, rgba(180, 120, 40, 0.12), transparent 50%),
+      linear-gradient(180deg, #f7f3ea 0%, var(--bg) 40%, #e8e1d2 100%);
+    z-index: -2;
+  }
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.45'/%3E%3C/svg%3E");
+    opacity: 0.035;
+    pointer-events: none;
+    z-index: -1;
+  }
 
-  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; height: 56px; background: rgba(8,12,16,0.88); backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); }
-  .nav-logo { font-family: var(--font-display); font-weight: 700; font-size: 16px; color: var(--flutter-blue); letter-spacing: -0.3px; text-decoration: none; }
-  .nav-logo span { color: var(--text-muted); font-weight: 400; }
-  .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
-  .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 13px; font-weight: 500; transition: color 0.2s; }
-  .nav-links a:hover { color: var(--flutter-blue); }
-  .nav-cta { background: var(--flutter-blue); color: #000 !important; padding: 6px 14px; border-radius: 4px; font-weight: 700; }
-  .nav-cta:hover { opacity: 0.82 !important; }
-  .nav-resume { color: var(--flutter-blue) !important; font-weight: 600; }
-  .nav-toggle { display: none; background: none; border: 1px solid var(--border); color: var(--text); width: 40px; height: 36px; border-radius: 6px; cursor: pointer; font-size: 18px; line-height: 1; }
-  .nav-toggle:hover { border-color: var(--flutter-blue); color: var(--flutter-blue); }
+  a { color: inherit; }
+  img { max-width: 100%; display: block; }
 
-  .hero { position: relative; min-height: 80vh; display: flex; align-items: center; padding: 120px 40px 80px; max-width: 900px; margin: 0 auto; }
-  .hero-left { flex: 1; z-index: 1; max-width: 700px; }
-  .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(84,197,248,0.08); border: 1px solid rgba(84,197,248,0.25); border-radius: 20px; padding: 4px 14px; font-size: 11px; color: var(--flutter-blue); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 28px; }
-  .hero-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--green); box-shadow: 0 0 6px var(--green); animation: pulse 2s infinite; }
-  @keyframes pulse { 0%,100%{opacity:1}50%{opacity:.4} }
-  .hero h1 { font-family: var(--font-display); font-size: clamp(36px, 5vw, 62px); font-weight: 800; line-height: 1.08; letter-spacing: -1.5px; margin-bottom: 8px; }
-  .hero-title-line { font-family: var(--font-display); font-size: clamp(14px, 1.8vw, 19px); font-weight: 600; color: var(--flutter-blue); letter-spacing: 0.02em; margin-bottom: 12px; }
-  .hero-location { font-size: 11.5px; color: var(--text-dim); margin-bottom: 20px; }
-  .hero-desc { color: var(--text-muted); font-size: 13px; max-width: 520px; line-height: 1.85; margin-bottom: 30px; }
-  .hero-stats { display: flex; gap: 28px; margin-bottom: 32px; flex-wrap: wrap; }
-  .stat-num { font-family: var(--font-display); font-size: 28px; font-weight: 800; color: var(--flutter-blue); }
-  .stat-label { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; }
-  .hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
-  .btn { display: inline-flex; align-items: center; gap: 7px; padding: 9px 18px; border-radius: 6px; font-family: var(--font-display); font-size: 13px; font-weight: 600; text-decoration: none; transition: all 0.2s; cursor: pointer; border: none; }
-  .btn-primary { background: var(--flutter-blue); color: #000; }
-  .btn-primary:hover { background: var(--accent2); transform: translateY(-1px); }
-  .btn-ghost { background: transparent; color: var(--text); border: 1px solid var(--border); }
-  .btn-ghost:hover { border-color: var(--flutter-blue); color: var(--flutter-blue); }
+  .wrap { width: min(100% - 48px, var(--max)); margin-inline: auto; }
 
-  section { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 72px 40px; }
-  .section-label { font-size: 11px; color: var(--flutter-blue); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 6px; font-family: var(--font-mono); font-weight: 500; }
-  .section-title { font-family: var(--font-display); font-size: clamp(26px, 3vw, 38px); font-weight: 800; letter-spacing: -0.5px; margin-bottom: 44px; }
-  .section-title span { color: var(--flutter-blue); }
+  /* NAV */
+  .site-nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    backdrop-filter: blur(14px);
+    background: rgba(243, 239, 230, 0.82);
+    border-bottom: 1px solid var(--line);
+  }
+  .site-nav .inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 64px;
+    gap: 16px;
+  }
+  .brand {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.05rem;
+    letter-spacing: -0.03em;
+    text-decoration: none;
+  }
+  .brand span { color: var(--accent); }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    list-style: none;
+  }
+  .nav-links a {
+    text-decoration: none;
+    font-size: 0.86rem;
+    font-weight: 500;
+    color: var(--muted);
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-links .nav-cta {
+    color: #fff;
+    background: var(--ink);
+    padding: 8px 14px;
+    border-radius: 999px;
+  }
+  .nav-links .nav-cta:hover { background: var(--accent); color: #fff; }
+  .nav-toggle {
+    display: none;
+    border: 1px solid var(--line);
+    background: transparent;
+    width: 42px;
+    height: 38px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1rem;
+  }
 
-  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 14px; }
-  .skill-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 18px; transition: border-color 0.2s, transform 0.2s; }
-  .skill-card:hover { border-color: rgba(84,197,248,0.4); transform: translateY(-2px); }
-  .skill-card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
-  .skill-icon { width: 30px; height: 30px; border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0; }
-  .skill-name { font-family: var(--font-display); font-weight: 700; font-size: 13.5px; }
-  .skill-tags { display: flex; flex-wrap: wrap; gap: 5px; }
-  .tag { background: var(--surface2); border: 1px solid var(--border); border-radius: 4px; padding: 2px 7px; font-size: 10.5px; color: var(--text-muted); font-family: var(--font-mono); letter-spacing: 0.02em; }
-  .tag-blue { border-color: rgba(84,197,248,0.3); color: var(--flutter-blue); background: rgba(84,197,248,0.06); }
-  .tag-green { border-color: rgba(63,185,80,0.3); color: var(--green); background: rgba(63,185,80,0.06); }
-  .tag-purple { border-color: rgba(163,113,247,0.3); color: var(--purple); background: rgba(163,113,247,0.06); }
-  .tag-yellow { border-color: rgba(210,153,34,0.3); color: var(--yellow); background: rgba(210,153,34,0.06); }
+  /* HERO */
+  .hero {
+    min-height: calc(100vh - 64px);
+    display: grid;
+    align-content: center;
+    padding: 72px 0 56px;
+    position: relative;
+  }
+  .hero-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 28px;
+  }
+  .hero-kicker::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.45; transform: scale(0.85); }
+  }
+  .hero-role {
+    font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+    color: var(--muted);
+    font-weight: 500;
+    margin-bottom: 14px;
+  }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(3.2rem, 9vw, 6.4rem);
+    line-height: 0.92;
+    letter-spacing: -0.05em;
+    margin-bottom: 18px;
+    max-width: 12ch;
+  }
+  .hero-sub {
+    font-family: var(--font-serif);
+    font-size: clamp(1.25rem, 2.4vw, 1.7rem);
+    font-style: italic;
+    color: var(--muted);
+    margin-bottom: 22px;
+    max-width: 28ch;
+  }
+  .hero-desc {
+    max-width: 52ch;
+    color: var(--muted);
+    font-size: 1.02rem;
+    margin-bottom: 32px;
+  }
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 20px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.92rem;
+    transition: transform 0.2s, background 0.2s, color 0.2s, border-color 0.2s;
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn-primary { background: var(--ink); color: #fff; }
+  .btn-primary:hover { background: var(--accent); }
+  .btn-ghost {
+    background: transparent;
+    border: 1px solid var(--line);
+    color: var(--ink);
+  }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
 
-  .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 18px; }
-  .project-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 22px; transition: all 0.25s; position: relative; overflow: hidden; }
-  .project-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--flutter-blue), var(--flutter-teal)); opacity: 0; transition: opacity 0.25s; }
-  .project-card:hover { border-color: rgba(84,197,248,0.35); transform: translateY(-3px); box-shadow: 0 8px 32px rgba(84,197,248,0.07); }
-  .project-card:hover::before { opacity: 1; }
-  .project-top { display: flex; justify-content: space-between; margin-bottom: 10px; }
-  .project-icon { font-size: 22px; }
-  .project-links { display: flex; gap: 10px; }
-  .project-links a { color: var(--text-dim); text-decoration: none; font-size: 11px; transition: color 0.2s; }
-  .project-links a:hover { color: var(--flutter-blue); }
-  .project-name { font-family: var(--font-display); font-weight: 700; font-size: 16px; color: var(--flutter-blue); margin-bottom: 6px; }
-  .project-name a { color: inherit; text-decoration: none; transition: color 0.2s; }
-  .project-name a:hover { color: var(--accent2); text-decoration: underline; }
-  .project-desc { color: var(--text-muted); font-size: 12.5px; line-height: 1.7; margin-bottom: 14px; }
-  .project-meta { display: flex; align-items: center; gap: 14px; font-size: 11px; color: var(--text-dim); border-top: 1px solid var(--border); padding-top: 12px; }
-  .lang-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+  /* MARQUEE */
+  .marquee {
+    border-block: 1px solid var(--line);
+    background: rgba(255, 252, 246, 0.45);
+    overflow: hidden;
+    margin-bottom: 24px;
+  }
+  .marquee-track {
+    display: flex;
+    gap: 28px;
+    width: max-content;
+    padding: 16px 0;
+    animation: scroll 38s linear infinite;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.92rem;
+    color: var(--muted);
+  }
+  .marquee-track span::after {
+    content: '·';
+    margin-left: 28px;
+    color: var(--dim);
+  }
+  @keyframes scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
 
-  .timeline { position: relative; padding-left: 22px; }
-  .timeline::before { content: ''; position: absolute; left: 0; top: 8px; bottom: 8px; width: 1px; background: linear-gradient(to bottom, var(--flutter-blue), transparent); }
-  .timeline-item { position: relative; padding-bottom: 36px; }
-  .timeline-item:last-child { padding-bottom: 0; }
-  .timeline-dot { position: absolute; left: -26px; top: 6px; width: 10px; height: 10px; border-radius: 50%; background: var(--flutter-blue); box-shadow: 0 0 10px rgba(84,197,248,0.5); }
-  .timeline-date { font-size: 11px; color: var(--flutter-blue); letter-spacing: 0.04em; margin-bottom: 2px; }
-  .timeline-role { font-family: var(--font-display); font-weight: 700; font-size: 15px; color: var(--text); margin-bottom: 1px; }
-  .timeline-company { font-size: 12px; color: var(--text-muted); margin-bottom: 9px; }
-  .timeline-points { list-style: none; display: flex; flex-direction: column; gap: 4px; }
-  .timeline-points li { font-size: 12px; color: var(--text-muted); display: flex; gap: 8px; }
-  .timeline-points li::before { content: '›'; color: var(--flutter-blue); flex-shrink: 0; }
+  /* SECTIONS */
+  section {
+    padding: 88px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .section-label {
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+    margin-bottom: 28px;
+    max-width: 14ch;
+  }
+  .section-title em {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent);
+  }
+  .lead {
+    max-width: 62ch;
+    color: var(--muted);
+    font-size: 1.05rem;
+    margin-bottom: 36px;
+  }
 
-  .oss-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 16px 18px; transition: border-color 0.2s; margin-bottom: 10px; }
-  .oss-card:hover { border-color: rgba(84,197,248,0.35); }
-  .oss-name { font-weight: 700; color: var(--flutter-blue); font-size: 13px; margin-bottom: 4px; }
-  .oss-desc { font-size: 11.5px; color: var(--text-muted); line-height: 1.6; margin-bottom: 8px; }
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-top: 40px;
+  }
+  .stat {
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+  }
+  .stat strong {
+    display: block;
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    letter-spacing: -0.04em;
+    margin-bottom: 4px;
+  }
+  .stat span {
+    font-size: 0.84rem;
+    color: var(--muted);
+  }
 
-  .achievements-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin-bottom: 0; }
-  .achievement-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 18px 20px; display: flex; gap: 14px; align-items: flex-start; transition: border-color 0.2s, transform 0.2s; }
-  .achievement-card:hover { border-color: rgba(84,197,248,0.4); transform: translateY(-2px); }
-  .achievement-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
-  .achievement-text { font-size: 12.5px; color: var(--text-muted); line-height: 1.7; }
+  /* SKILLS */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px 24px;
+  }
+  .skill-block h3 {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+  }
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .tag {
+    font-size: 0.8rem;
+    color: var(--muted);
+    border: 1px solid var(--line);
+    background: var(--surface);
+    padding: 5px 10px;
+    border-radius: 999px;
+  }
 
-  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
-  .contact-item { display: flex; align-items: center; gap: 12px; margin-bottom: 13px; font-size: 12.5px; color: var(--text-muted); }
-  .contact-item a { color: var(--flutter-blue); text-decoration: none; }
-  .contact-item a:hover { text-decoration: underline; }
-  .contact-icon { width: 34px; height: 34px; border-radius: 7px; background: var(--surface2); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0; }
+  /* WORK FILTERS */
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 28px;
+  }
+  .filter-btn {
+    border: 1px solid var(--line);
+    background: transparent;
+    color: var(--muted);
+    padding: 8px 14px;
+    border-radius: 999px;
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-size: 0.84rem;
+    font-weight: 600;
+    transition: 0.2s;
+  }
+  .filter-btn.is-active,
+  .filter-btn:hover {
+    background: var(--ink);
+    color: #fff;
+    border-color: var(--ink);
+  }
 
-  .divider { border: none; border-top: 1px solid var(--border); max-width: 1200px; margin: 0 auto; }
-  footer { text-align: center; padding: 28px 40px; font-size: 11px; color: var(--text-dim); border-top: 1px solid var(--border); z-index: 1; position: relative; }
-  footer a { color: var(--flutter-blue); text-decoration: none; }
+  .work-list { display: grid; gap: 14px; }
+  .work-item {
+    display: grid;
+    grid-template-columns: 64px 1fr auto;
+    gap: 18px;
+    align-items: start;
+    padding: 22px 0;
+    border-top: 1px solid var(--line);
+    text-decoration: none;
+    transition: padding 0.25s, background 0.25s;
+  }
+  .work-item:last-child { border-bottom: 1px solid var(--line); }
+  .work-item:hover { padding-left: 8px; }
+  .work-num {
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--dim);
+    font-size: 0.9rem;
+    padding-top: 4px;
+  }
+  .work-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.2rem;
+    letter-spacing: -0.02em;
+    margin-bottom: 6px;
+  }
+  .work-desc {
+    color: var(--muted);
+    font-size: 0.94rem;
+    max-width: 62ch;
+    margin-bottom: 10px;
+  }
+  .work-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 0.78rem;
+    color: var(--dim);
+  }
+  .work-meta span {
+    border: 1px solid var(--line);
+    padding: 3px 8px;
+    border-radius: 999px;
+  }
+  .work-arrow {
+    font-size: 1.2rem;
+    color: var(--accent);
+    padding-top: 4px;
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: 0.2s;
+  }
+  .work-item:hover .work-arrow,
+  .work-item.has-link .work-arrow { opacity: 1; transform: translateX(0); }
+  .work-item.hidden { display: none; }
 
-  .orb { position: fixed; border-radius: 50%; filter: blur(80px); opacity: 0.1; pointer-events: none; z-index: 0; }
-  .orb-1 { width: 500px; height: 500px; background: var(--flutter-blue); top: -150px; right: -100px; }
-  .orb-2 { width: 380px; height: 380px; background: var(--flutter-teal); bottom: 100px; left: -100px; }
+  /* EXPERIENCE */
+  .exp-list { display: grid; gap: 0; }
+  .exp-item {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 28px;
+    padding: 28px 0;
+    border-top: 1px solid var(--line);
+  }
+  .exp-item:last-child { border-bottom: 1px solid var(--line); }
+  .exp-date {
+    font-size: 0.86rem;
+    color: var(--muted);
+  }
+  .exp-type {
+    display: inline-block;
+    margin-top: 8px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .exp-role {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 4px;
+  }
+  .exp-company {
+    color: var(--muted);
+    margin-bottom: 14px;
+    font-size: 0.95rem;
+  }
+  .exp-points {
+    list-style: none;
+    display: grid;
+    gap: 8px;
+  }
+  .exp-points li {
+    position: relative;
+    padding-left: 16px;
+    color: var(--muted);
+    font-size: 0.94rem;
+  }
+  .exp-points li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.65em;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
 
-  .fade-in { opacity: 0; transform: translateY(20px); animation: fadeIn 0.6s forwards; }
-  @keyframes fadeIn { to { opacity:1; transform:translateY(0); } }
-  .fade-in:nth-child(1){animation-delay:.1s}.fade-in:nth-child(2){animation-delay:.2s}.fade-in:nth-child(3){animation-delay:.3s}.fade-in:nth-child(4){animation-delay:.4s}.fade-in:nth-child(5){animation-delay:.5s}.fade-in:nth-child(6){animation-delay:.6s}
+  .edu-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin-top: 36px;
+  }
+  .edu-item {
+    padding: 20px 0;
+    border-top: 1px solid var(--line);
+  }
+  .edu-item h4 {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    margin-bottom: 4px;
+  }
+  .edu-item p { color: var(--muted); font-size: 0.9rem; }
 
-  ::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}::-webkit-scrollbar-thumb:hover{background:var(--flutter-blue)}
+  /* CONTACT */
+  #contact { border-bottom: none; }
+  .contact-panel {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 48px;
+    align-items: end;
+  }
+  .contact-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.4rem, 6vw, 4.2rem);
+    font-weight: 800;
+    letter-spacing: -0.045em;
+    line-height: 1;
+    margin-bottom: 18px;
+    max-width: 12ch;
+  }
+  .contact-title em {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent);
+  }
+  .contact-links {
+    display: grid;
+    gap: 12px;
+  }
+  .contact-links a {
+    text-decoration: none;
+    color: var(--muted);
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .contact-links a:hover { color: var(--accent); }
 
-  @media(max-width:900px){
-    nav{padding:0 20px;flex-wrap:wrap;height:auto;min-height:56px}
-    .nav-toggle{display:flex;align-items:center;justify-content:center}
-    .nav-links{display:none;flex-direction:column;align-items:stretch;gap:0;width:100%;padding:12px 0 16px;border-top:1px solid var(--border);margin-top:12px}
-    .nav-links.is-open{display:flex}
-    .nav-links li{width:100%}
-    .nav-links a{display:block;padding:12px 4px;font-size:14px}
-    .nav-cta{text-align:center;margin-top:4px}
-    .hero{padding:80px 20px 40px}
-    section{padding:52px 20px}.contact-grid{grid-template-columns:1fr;gap:28px}.projects-grid{grid-template-columns:1fr}
-    .exp-grid{grid-template-columns:1fr !important}
-    .achievements-grid{grid-template-columns:1fr}
+  footer {
+    padding: 28px 0 48px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    color: var(--dim);
+    font-size: 0.84rem;
+  }
+  footer a { color: var(--accent); text-decoration: none; }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    animation: rise 0.7s ease forwards;
+  }
+  .reveal:nth-child(2) { animation-delay: 0.08s; }
+  .reveal:nth-child(3) { animation-delay: 0.16s; }
+  .reveal:nth-child(4) { animation-delay: 0.24s; }
+  .reveal:nth-child(5) { animation-delay: 0.32s; }
+  @keyframes rise {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 900px) {
+    .wrap { width: min(100% - 32px, var(--max)); }
+    .nav-toggle { display: inline-flex; align-items: center; justify-content: center; }
+    .nav-links {
+      display: none;
+      position: absolute;
+      left: 0; right: 0; top: 64px;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      background: rgba(243, 239, 230, 0.98);
+      border-bottom: 1px solid var(--line);
+      padding: 8px 16px 16px;
+    }
+    .nav-links.is-open { display: flex; }
+    .nav-links li a { display: block; padding: 12px 4px; }
+    .nav-links .nav-cta { text-align: center; margin-top: 6px; }
+    .skills-grid { grid-template-columns: 1fr 1fr; }
+    .stat-row { grid-template-columns: 1fr 1fr; }
+    .work-item { grid-template-columns: 48px 1fr; }
+    .work-arrow { display: none; }
+    .exp-item { grid-template-columns: 1fr; gap: 10px; }
+    .edu-grid, .contact-panel { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 560px) {
+    .skills-grid { grid-template-columns: 1fr; }
+    .hero { padding-top: 48px; min-height: auto; }
   }
 </style>
 </head>
 <body>
-<div class="orb orb-1"></div>
-<div class="orb orb-2"></div>
-
-<!-- NAV -->
-<nav id="top">
-  <a href="#top" class="nav-logo">flutter<span>.</span>dev <span>/ Rakesh Kumar Choudhary</span></a>
-  <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">☰</button>
-  <ul class="nav-links" id="nav-links">
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#achievements">Achievements</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="https://docs.google.com/document/d/1Pu0ArSAZ2Hwm7P7tAhbhov8xY5bhCmfJoWnfa2lHb24/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="nav-resume">Resume</a></li>
-    <li><a href="https://github.com/choudhryr723" target="_blank" rel="noopener noreferrer" class="nav-cta">Hire Me →</a></li>
-  </ul>
-</nav>
-
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-left">
-    <div class="hero-badge fade-in">Open to Senior Flutter Roles &amp; Cross-Platform Development</div>
-    <h1 class="fade-in">Rakesh Kumar<br>Choudhary</h1>
-    <div class="hero-title-line fade-in">Senior Flutter Developer · Cross-Platform Mobile Engineer</div>
-    <div class="hero-location fade-in">📍 Jaipur, Rajasthan, India &nbsp;·&nbsp; 📞 +91-7610908574</div>
-    <p class="hero-desc fade-in">
-      6+ years of mobile development specialising in Flutter. I build scalable, high-performance cross-platform apps for healthcare, social media, fintech, IoT, and enterprise domains. Expert in Clean Architecture, BLoC, Firebase, WebSockets, and real-time systems with 15+ production apps shipped.
-    </p>
-    <div class="hero-stats fade-in">
-      <div class="stat"><div class="stat-num">6+</div><div class="stat-label">Yrs Mobile</div></div>
-      <div class="stat"><div class="stat-num">15+</div><div class="stat-label">Apps Shipped</div></div>
-      <div class="stat"><div class="stat-num">30–40%</div><div class="stat-label">Perf Gains</div></div>
+  <header class="site-nav">
+    <div class="wrap inner">
+      <a class="brand" href="#top">Rakesh<span>.</span></a>
+      <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">☰</button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a class="nav-cta" href="https://docs.google.com/document/d/1Pu0ArSAZ2Hwm7P7tAhbhov8xY5bhCmfJoWnfa2lHb24/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Resume</a></li>
+      </ul>
     </div>
-    <div class="hero-actions fade-in">
+  </header>
 
-      <!-- Resume -->
-      <a href="https://docs.google.com/document/d/1Pu0ArSAZ2Hwm7P7tAhbhov8xY5bhCmfJoWnfa2lHb24/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM6 20V4h5v7h7v9H6z"/>
-        </svg>
-        View Resume
-      </a>
-
-      <!-- GitHub -->
-      <a href="https://github.com/choudhryr723" target="_blank" class="btn btn-primary">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12 .5C5.65.5.75 5.4.75 11.74c0 5.07 3.29 9.36 7.86 10.88.57.1.78-.25.78-.56 0-.28-.01-1.03-.02-2.02-3.2.7-3.88-1.54-3.88-1.54-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.16.08 1.78 1.2 1.78 1.2 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.68 0-1.25.45-2.27 1.19-3.07-.12-.29-.52-1.46.11-3.05 0 0 .98-.31 3.2 1.17a11.1 11.1 0 0 1 5.82 0c2.22-1.48 3.2-1.17 3.2-1.17.63 1.59.23 2.76.11 3.05.74.8 1.19 1.82 1.19 3.07 0 4.41-2.69 5.39-5.25 5.67.41.36.77 1.08.77 2.17 0 1.57-.01 2.84-.01 3.22 0 .31.2.67.79.56 4.56-1.52 7.85-5.81 7.85-10.88C23.25 5.4 18.35.5 12 .5z"/>
-        </svg>
-        GitHub Profile
-      </a>
-
-      <!-- Gmail -->
-      <a href="mailto:choudharyr723@gmail.com" class="btn btn-ghost">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/>
-        </svg>
-        Email Me
-      </a>
-
-      <!-- LinkedIn -->
-      <a href="https://www.linkedin.com/in/rakeshkumarchoudhary92/" target="_blank" class="btn btn-primary">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.025-3.036-1.851-3.036-1.853 0-2.136 1.445-2.136 2.939v5.666H9.352V9h3.414v1.561h.049c.476-.9 1.637-1.849 3.37-1.849 3.603 0 4.268 2.372 4.268 5.455v6.285zM5.337 7.433c-1.144 0-2.066-.926-2.066-2.065 0-1.14.922-2.066 2.066-2.066 1.14 0 2.064.926 2.064 2.066 0 1.139-.924 2.065-2.064 2.065zM6.999 20.452H3.674V9h3.325v11.452z"/>
-        </svg>
-        LinkedIn Profile
-      </a>
-
-    </div>
-  </div>
-</div>
-
-<hr class="divider">
-
-<!-- SKILLS -->
-<section id="skills">
-  <div class="section-label">// expertise</div>
-  <div class="section-title">Technical <span>Stack</span></div>
-  <div class="skills-grid">
-    <div class="skill-card">
-      <div class="skill-card-header"><div class="skill-icon" style="background:rgba(84,197,248,0.1)">🎯</div><div class="skill-name">Flutter &amp; Dart</div></div>
-      <div class="skill-tags"><span class="tag tag-blue">Flutter</span><span class="tag tag-blue">Dart</span><span class="tag tag-blue">Cross-Platform</span><span class="tag tag-blue">Android</span><span class="tag tag-blue">iOS</span><span class="tag tag-blue">Web</span><span class="tag tag-blue">Desktop</span></div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-card-header"><div class="skill-icon" style="background:rgba(163,113,247,0.1)">🏗️</div><div class="skill-name">Architecture</div></div>
-      <div class="skill-tags"><span class="tag tag-purple">Clean Architecture</span><span class="tag tag-purple">BLoC</span><span class="tag tag-purple">MVVM</span><span class="tag tag-purple">Repository Pattern</span><span class="tag tag-purple">Freezed</span></div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-card-header"><div class="skill-icon" style="background:rgba(63,185,80,0.1)">⚛️</div><div class="skill-name">Frontend</div></div>
-      <div class="skill-tags"><span class="tag tag-green">React.js</span><span class="tag tag-green">Redux Toolkit</span><span class="tag tag-green">Tailwind CSS</span><span class="tag tag-green">Axios</span></div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-card-header"><div class="skill-icon" style="background:rgba(84,197,248,0.1)">☁️</div><div class="skill-name">Backend &amp; APIs</div></div>
-      <div class="skill-tags"><span class="tag tag-blue">REST APIs</span><span class="tag tag-blue">SOAP API</span><span class="tag tag-blue">Firebase</span><span class="tag tag-blue">WebSockets</span><span class="tag tag-blue">Dio</span><span class="tag tag-blue">Firestore</span></div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-card-header"><div class="skill-icon" style="background:rgba(210,153,34,0.1)">💳</div><div class="skill-name">Integrations</div></div>
-      <div class="skill-tags"><span class="tag tag-yellow">Payment Gateway</span><span class="tag tag-yellow">Google Maps</span><span class="tag tag-yellow">Mapbox</span><span class="tag tag-yellow">Face Recognition</span><span class="tag tag-yellow">Biometric Auth</span><span class="tag tag-yellow">In-App Purchases</span><span class="tag tag-yellow">Push Notifications</span><span class="tag tag-yellow">AI Integration</span></div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-card-header"><div class="skill-icon" style="background:rgba(63,185,80,0.1)">🔧</div><div class="skill-name">Database &amp; Tools</div></div>
-      <div class="skill-tags"><span class="tag tag-green">SQLite</span><span class="tag tag-green">MySQL</span><span class="tag tag-green">Git / GitHub</span><span class="tag tag-green">Postman</span><span class="tag tag-green">Android Studio</span><span class="tag tag-green">Xcode</span><span class="tag tag-green">Figma</span><span class="tag tag-green">App Store &amp; Play Store</span></div>
-    </div>
-  </div>
-</section>
-
-<hr class="divider">
-
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="section-label">// featured work</div>
-  <div class="section-title">App <span>Projects</span></div>
-  <div class="projects-grid">
-
-    <!-- AI Farm Management -->
-    <div class="project-card">
-      <div class="project-top">
-        <div class="project-icon">🌾</div>
-        <div class="project-links"><span style="color:var(--flutter-blue);font-size:10px;border:1px solid rgba(84,197,248,0.3);padding:1px 7px;border-radius:3px;">AI</span></div>
-      </div>
-      <div class="project-name">AI Farm Management System</div>
-      <div class="project-desc">AI-powered agriculture management platform for smart farming — farm monitoring, crop analysis, weather insights, and geolocation via Mapbox. Includes AI-based crop recommendations and farm productivity insights.</div>
-      <div class="skill-tags" style="margin-bottom:12px"><span class="tag tag-blue">Flutter</span><span class="tag tag-yellow">Mapbox</span><span class="tag tag-purple">AI Analytics</span><span class="tag tag-purple">MVVM</span></div>
-      <div class="project-meta"><div style="display:flex;align-items:center;gap:4px"><span class="lang-dot" style="background:#54C5F8"></span>Dart</div><div>Production</div></div>
-    </div>
-
-    <!-- JANAJAL -->
-    <div class="project-card">
-      <div class="project-top">
-        <div class="project-icon">💧</div>
-      </div>
-      <div class="project-name">JANAJAL — Water Delivery</div>
-      <div class="project-desc">End-to-end water supply subscription app with delivery tracking, payment gateway integration, and location services. Architected with Clean Architecture and BLoC for maintainable, testable code.</div>
-      <div class="skill-tags" style="margin-bottom:12px"><span class="tag tag-blue">Flutter</span><span class="tag tag-purple">BLoC</span><span class="tag tag-yellow">Google Maps SDK</span><span class="tag tag-yellow">Payment Gateway</span></div>
-      <div class="project-meta"><div style="display:flex;align-items:center;gap:4px"><span class="lang-dot" style="background:#54C5F8"></span>Dart</div><div>Production</div></div>
-    </div>
-
-    <!-- Sonohaler -->
-    <div class="project-card">
-      <div class="project-top">
-        <div class="project-icon">🫁</div>
-        <div class="project-links"><a href="https://sonoek-patient-dashboard-uvqgj.ondigitalocean.app/" target="_blank" rel="noopener noreferrer">Live Demo ↗</a></div>
-      </div>
-      <div class="project-name"><a href="https://sonoek-patient-dashboard-uvqgj.ondigitalocean.app/" target="_blank" rel="noopener noreferrer">Sonohaler — Smart Inhaler</a></div>
-      <div class="project-desc">Healthcare web app enabling patients to track medication usage, set reminders, and share usage data with providers. Complex async flows via Redux Thunk with a responsive Tailwind UI.</div>
-      <div class="skill-tags" style="margin-bottom:12px"><span class="tag tag-green">React.js</span><span class="tag tag-green">Redux Toolkit</span><span class="tag tag-green">Tailwind CSS</span><span class="tag tag-green">Axios</span></div>
-      <div class="project-meta"><div style="display:flex;align-items:center;gap:4px"><span class="lang-dot" style="background:#3fb950"></span>JavaScript</div><div>Production</div></div>
-    </div>
-
-    <!-- VIP Club RJ -->
-    <div class="project-card">
-      <div class="project-top">
-        <div class="project-icon">🤝</div>
-        <div class="project-links"><a href="https://play.google.com/store/apps/details?id=com.rayz.bcpl&amp;pcampaignid=web_share" target="_blank" rel="noopener noreferrer">Play Store ↗</a></div>
-      </div>
-      <div class="project-name"><a href="https://play.google.com/store/apps/details?id=com.rayz.bcpl&amp;pcampaignid=web_share" target="_blank" rel="noopener noreferrer">VIP Club RJ — Channel Partner</a></div>
-      <div class="project-desc">Secure cross-platform communication app for Vivo's channel partners, operational on both mobile and desktop. Optimized for low-bandwidth networks ensuring reliability without subscription dependency.</div>
-      <div class="skill-tags" style="margin-bottom:12px"><span class="tag tag-blue">Flutter</span><span class="tag tag-purple">BLoC</span><span class="tag tag-blue">Dio</span><span class="tag tag-purple">Clean Architecture</span></div>
-      <div class="project-meta"><div style="display:flex;align-items:center;gap:4px"><span class="lang-dot" style="background:#54C5F8"></span>Dart</div><div>Production · Mobile + Desktop</div></div>
-    </div>
-
-    <!-- Opco Client Access -->
-    <div class="project-card">
-      <div class="project-top">
-        <div class="project-icon">🏦</div>
-      </div>
-      <div class="project-name">Opco Client Access — Banking</div>
-      <div class="project-desc">Secure mobile banking app for Oppenheimer &amp; Co. Inc. users featuring biometric on-device authentication. MVVM architecture with Dio for secure, efficient backend communication.</div>
-      <div class="skill-tags" style="margin-bottom:12px"><span class="tag tag-blue">Flutter</span><span class="tag tag-purple">MVVM</span><span class="tag tag-blue">Dio</span><span class="tag tag-yellow">Biometric Auth</span></div>
-      <div class="project-meta"><div style="display:flex;align-items:center;gap:4px"><span class="lang-dot" style="background:#54C5F8"></span>Dart</div><div>Production · Fintech</div></div>
-    </div>
-
-    <!-- MotorCut -->
-    <div class="project-card">
-      <div class="project-top">
-        <div class="project-icon">🚗</div>
-        <div class="project-links"><span style="color:var(--flutter-blue);font-size:10px;border:1px solid rgba(84,197,248,0.3);padding:1px 7px;border-radius:3px;">AI</span></div>
-      </div>
-      <div class="project-name">MotorCut — AI Automotive Ads</div>
-      <div class="project-desc">AI-powered platform that transforms vehicle photos into professional marketing adverts. Integrated backend AI services via Dio with efficient async handling and error recovery.</div>
-      <div class="skill-tags" style="margin-bottom:12px"><span class="tag tag-blue">Flutter</span><span class="tag tag-purple">BLoC</span><span class="tag tag-blue">Dio</span><span class="tag tag-purple">AI Integration</span></div>
-      <div class="project-meta"><div style="display:flex;align-items:center;gap:4px"><span class="lang-dot" style="background:#54C5F8"></span>Dart</div><div>Production</div></div>
-    </div>
-
-    <!-- Fever Radio -->
-    <div class="project-card">
-      <div class="project-top">
-        <div class="project-icon">📻</div>
-      </div>
-      <div class="project-name">Fever Radio — FM Streaming</div>
-      <div class="project-desc">Real-time audio streaming and radio playback app supporting continuous FM and music program listening. Enhanced performance and app stability for seamless streaming across Android devices.</div>
-      <div class="skill-tags" style="margin-bottom:12px"><span class="tag tag-blue">Flutter</span><span class="tag tag-blue">REST API</span><span class="tag tag-purple">Media Player</span></div>
-      <div class="project-meta"><div style="display:flex;align-items:center;gap:4px"><span class="lang-dot" style="background:#54C5F8"></span>Dart</div><div>Production</div></div>
-    </div>
-
-    <!-- Realm Talks -->
-    <div class="project-card">
-      <div class="project-top">
-        <div class="project-icon">💬</div>
-      </div>
-      <div class="project-name">Realm Talks — Social Media</div>
-      <div class="project-desc">Cross-platform social media app with Firebase — profiles, image/text posts, likes, comments, and real-time notifications. Custom animations with BLoC state management and Firebase Storage for media.</div>
-      <div class="skill-tags" style="margin-bottom:12px"><span class="tag tag-blue">Flutter</span><span class="tag tag-blue">Firebase Auth</span><span class="tag tag-purple">Firestore</span><span class="tag tag-purple">BLoC</span></div>
-      <div class="project-meta"><div style="display:flex;align-items:center;gap:4px"><span class="lang-dot" style="background:#54C5F8"></span>Dart</div><div>Production</div></div>
-    </div>
-
-    <!-- Digip -->
-    <div class="project-card">
-      <div class="project-top">
-        <div class="project-icon">📷</div>
-      </div>
-      <div class="project-name">Digip — Camera Management</div>
-      <div class="project-desc">Mobile app for managing camera installations, task assignments for technicians, and complaint registrations. Clean Architecture with BLoC and Freezed for type-safe immutable models.</div>
-      <div class="skill-tags" style="margin-bottom:12px"><span class="tag tag-blue">Flutter</span><span class="tag tag-blue">Firebase</span><span class="tag tag-purple">BLoC</span><span class="tag tag-purple">Clean Arch</span><span class="tag tag-purple">Freezed</span></div>
-      <div class="project-meta"><div style="display:flex;align-items:center;gap:4px"><span class="lang-dot" style="background:#54C5F8"></span>Dart</div><div>Production</div></div>
-    </div>
-
-    <!-- JRRSU -->
-    <div class="project-card">
-      <div class="project-top">
-        <div class="project-icon">🎓</div>
-      </div>
-      <div class="project-name">JRRSU — University Portal</div>
-      <div class="project-desc">University student app for digital access to academic and administrative information — notifications, exam updates, and student-related services improving campus accessibility and communication.</div>
-      <div class="skill-tags" style="margin-bottom:12px"><span class="tag tag-blue">Flutter</span><span class="tag tag-blue">Firebase</span><span class="tag tag-purple">BLoC</span><span class="tag tag-purple">Freezed</span></div>
-      <div class="project-meta"><div style="display:flex;align-items:center;gap:4px"><span class="lang-dot" style="background:#54C5F8"></span>Dart</div><div>Production · Education</div></div>
-    </div>
-
-    <!-- Physical Storage Optimiser -->
-    <div class="project-card">
-      <div class="project-top">
-        <div class="project-icon">📦</div>
-      </div>
-      <div class="project-name">Physical Storage Optimiser</div>
-      <div class="project-desc">Space management app for organizing rooms and storage areas — categorize, track, and visualize physical items. Structured inventory and space mapping tools for improved organization efficiency.</div>
-      <div class="skill-tags" style="margin-bottom:12px"><span class="tag tag-blue">Flutter</span><span class="tag tag-purple">BLoC</span><span class="tag tag-purple">Clean Architecture</span><span class="tag tag-purple">Freezed</span></div>
-      <div class="project-meta"><div style="display:flex;align-items:center;gap:4px"><span class="lang-dot" style="background:#54C5F8"></span>Dart</div><div>Production</div></div>
-    </div>
-
-    <!-- Face Recognition Attendance -->
-    <div class="project-card">
-      <div class="project-top">
-        <div class="project-icon">🤖</div>
-        <div class="project-links"><span style="color:var(--yellow);font-size:10px;border:1px solid rgba(210,153,34,0.3);padding:1px 7px;border-radius:3px;">AI</span></div>
-      </div>
-      <div class="project-name">Face Recognition Attendance</div>
-      <div class="project-desc">Mobile attendance app using real-time face recognition with camera-based detection, liveness check, and auto check-in/out. Employee registration module with face capture, local DB, and timestamped attendance logs.</div>
-      <div class="skill-tags" style="margin-bottom:12px"><span class="tag tag-blue">Flutter</span><span class="tag tag-green">SQLite</span><span class="tag tag-blue">Firebase</span><span class="tag tag-yellow">Face Recognition</span><span class="tag tag-purple">BLoC</span></div>
-      <div class="project-meta"><div style="display:flex;align-items:center;gap:4px"><span class="lang-dot" style="background:#54C5F8"></span>Dart</div><div>Production · Enterprise</div></div>
-    </div>
-
-  </div>
-</section>
-
-<hr class="divider">
-
-<!-- EXPERIENCE -->
-<section id="experience">
-  <div class="section-label">// career history</div>
-  <div class="section-title">Work <span>Experience</span></div>
-
-  <div class="exp-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:52px">
-    <div class="timeline">
-
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-date">Oct 2023 – Present · 2+ years</div>
-        <div class="timeline-role">Flutter Developer</div>
-        <div class="timeline-company">Rayz Infotech — Jaipur, India</div>
-        <ul class="timeline-points">
-          <li>Designing and developing scalable Flutter apps for Android, iOS, Web, and Desktop</li>
-          <li>Implementing Clean Architecture and BLoC/MVVM for maintainable, testable applications</li>
-          <li>Integrating REST APIs, Firebase services, payment gateways, and third-party SDKs</li>
-          <li>Collaborating with UI/UX designers and backend teams in Agile environments</li>
-          <li>Optimizing app performance, memory usage, and API response handling for production</li>
-        </ul>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-date">Oct 2019 – Sep 2023 · 4 years</div>
-        <div class="timeline-role">Flutter Developer</div>
-        <div class="timeline-company">Digitalries Pvt. Ltd.</div>
-        <ul class="timeline-points">
-          <li>Built 10+ production Flutter apps across healthcare, enterprise, and IoT domains</li>
-          <li>Architected Clean Architecture + BLoC + Freezed patterns across all major projects</li>
-          <li>Delivered face recognition attendance system used in live enterprise environments</li>
-          <li>Introduced architectural standards reducing onboarding time and technical debt</li>
-          <li>Managed full mobile lifecycle: design, dev, deployment, Play Store / App Store releases</li>
-        </ul>
-      </div>
-
-    </div>
-
-    <div>
-      <div>
-        <div class="section-label" style="margin-bottom:14px">// education</div>
-        <div class="oss-card">
-          <div class="oss-name">🎓 Master of Computer Applications (MCA)</div>
-          <div class="oss-desc">2017 · Rajasthan Technical University, Kota &nbsp;·&nbsp; 65%</div>
-        </div>
-        <div class="oss-card">
-          <div class="oss-name">🎓 Bachelor of Computer Applications (BCA)</div>
-          <div class="oss-desc">2014 · University of Rajasthan, Jaipur &nbsp;·&nbsp; 61%</div>
-        </div>
-        <div class="section-label" style="margin-bottom:12px;margin-top:20px">// core skills summary</div>
-        <div class="skill-tags">
-          <span class="tag tag-blue">Flutter</span><span class="tag tag-blue">Dart</span><span class="tag tag-green">React.js</span><span class="tag tag-green">Redux Toolkit</span><span class="tag tag-purple">BLoC</span><span class="tag tag-purple">Clean Architecture</span><span class="tag tag-purple">MVVM</span><span class="tag tag-purple">Repository Pattern</span><span class="tag tag-blue">REST APIs</span><span class="tag tag-blue">WebSockets</span><span class="tag tag-blue">Firebase</span><span class="tag tag-yellow">Google Maps</span><span class="tag tag-yellow">Mapbox</span><span class="tag tag-yellow">Payment Gateways</span><span class="tag tag-yellow">Face Recognition</span><span class="tag tag-yellow">Biometric Auth</span><span class="tag tag-green">SQLite</span><span class="tag tag-green">MySQL</span><span class="tag tag-green">Figma</span><span class="tag tag-green">Git</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<hr class="divider">
-
-<!-- ACHIEVEMENTS -->
-<section id="achievements">
-  <div class="section-label">// impact &amp; milestones</div>
-  <div class="section-title">Key <span>Achievements</span></div>
-  <div class="achievements-grid">
-    <div class="achievement-card">
-      <div class="achievement-icon">🚀</div>
-      <div class="achievement-text">Shipped <strong style="color:var(--flutter-blue)">15+ production apps</strong> from conception to Play Store / App Store with consistently strong user ratings.</div>
-    </div>
-    <div class="achievement-card">
-      <div class="achievement-icon">⚡</div>
-      <div class="achievement-text">Delivered <strong style="color:var(--flutter-blue)">30–40% performance gains</strong> across projects through systematic profiling and code optimization.</div>
-    </div>
-    <div class="achievement-card">
-      <div class="achievement-icon">🏗️</div>
-      <div class="achievement-text">Introduced <strong style="color:var(--flutter-blue)">Clean Architecture &amp; BLoC standards</strong> across the team, significantly reducing onboarding time and technical debt.</div>
-    </div>
-    <div class="achievement-card">
-      <div class="achievement-icon">🤖</div>
-      <div class="achievement-text">Built and deployed a <strong style="color:var(--flutter-blue)">real-time face recognition attendance system</strong> live in an enterprise environment.</div>
-    </div>
-    <div class="achievement-card">
-      <div class="achievement-icon">🌐</div>
-      <div class="achievement-text">Delivered <strong style="color:var(--flutter-blue)">bilingual production apps</strong> (Hindi &amp; English) with full internationalization across Android, iOS, Web, and Desktop.</div>
-    </div>
-    <div class="achievement-card">
-      <div class="achievement-icon">💡</div>
-      <div class="achievement-text">Integrated <strong style="color:var(--flutter-blue)">AI services</strong> into production Flutter apps including crop analytics, automotive ad generation, and face detection.</div>
-    </div>
-  </div>
-</section>
-
-<hr class="divider">
-
-<!-- CONTACT -->
-<section id="contact">
-  <div class="section-label">// get in touch</div>
-  <div class="section-title">Let's <span>Connect</span></div>
-  <div class="contact-grid">
-    <div>
-      <p style="color:var(--text-muted);font-size:13px;line-height:1.85;max-width:430px;margin-bottom:26px">
-        Open to Senior Flutter engineering roles and cross-platform mobile projects. 5+ years of expertise in Flutter, Clean Architecture, and real-time systems. Based in Jaipur, Rajasthan, India. Bilingual: Hindi &amp; English.
+  <main id="top">
+    <section class="hero wrap" style="border:0;padding-bottom:40px">
+      <div class="hero-kicker reveal">Open to senior Flutter roles</div>
+      <p class="hero-role reveal">Senior Flutter Developer · Cross-Platform Engineer</p>
+      <h1 class="reveal">Rakesh Kumar Choudhary</h1>
+      <p class="hero-sub reveal">Mobile craft. Production systems. Clean architecture.</p>
+      <p class="hero-desc reveal">
+        6+ years shipping high-performance Flutter apps across healthcare, fintech, IoT, and enterprise — with Clean Architecture, BLoC, Firebase, and real-time systems.
       </p>
-
-      <div class="contact-item">
-        <div class="contact-icon">📞</div>
-        <span>+91-7610908574</span>
+      <div class="hero-actions reveal">
+        <a class="btn btn-primary" href="#work">View Work ↓</a>
+        <a class="btn btn-ghost" href="#contact">Contact</a>
       </div>
+    </section>
 
-      <div class="contact-item">
-        <div class="contact-icon">✉️</div>
-        <a href="mailto:choudharyr723@gmail.com">choudharyr723@gmail.com</a>
-      </div>
-
-      <div class="contact-item">
-        <div class="contact-icon">🐙</div>
-        <a href="https://github.com/choudhryr723" target="_blank">github.com/choudhryr723</a>
-      </div>
-
-      <div class="contact-item">
-        <div class="contact-icon">💼</div>
-        <a href="https://www.linkedin.com/in/rakeshkumarchoudhary92/" target="_blank">linkedin.com/in/rakeshkumarchoudhary92</a>
-      </div>
-
-      <div class="contact-item">
-        <div class="contact-icon">📍</div>
-        <span>Jaipur, Rajasthan, India</span>
-      </div>
-
-      <div class="contact-item">
-        <div class="contact-icon">📄</div>
-        <a href="https://docs.google.com/document/d/1Pu0ArSAZ2Hwm7P7tAhbhov8xY5bhCmfJoWnfa2lHb24/edit?usp=sharing" target="_blank" rel="noopener noreferrer">View Resume (Google Docs)</a>
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Flutter</span><span>Dart</span><span>BLoC</span><span>Clean Architecture</span><span>Firebase</span><span>React.js</span><span>Redux Toolkit</span><span>WebSockets</span><span>Google Maps</span><span>Mapbox</span><span>Face Recognition</span><span>Payment Gateways</span><span>SQLite</span><span>MVVM</span>
+        <span>Flutter</span><span>Dart</span><span>BLoC</span><span>Clean Architecture</span><span>Firebase</span><span>React.js</span><span>Redux Toolkit</span><span>WebSockets</span><span>Google Maps</span><span>Mapbox</span><span>Face Recognition</span><span>Payment Gateways</span><span>SQLite</span><span>MVVM</span>
       </div>
     </div>
 
-    <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px">
-      <div style="font-family:var(--font-display);font-weight:700;font-size:15px;margin-bottom:4px">Available for</div>
-      <div style="color:var(--text-muted);font-size:11.5px;margin-bottom:20px">Senior Flutter roles &amp; cross-platform engineering</div>
-
-      <div style="display:flex;flex-direction:column;gap:10px">
-        <div style="display:flex;align-items:center;gap:10px;font-size:12.5px">
-          <span style="color:var(--green)">✓</span>Senior Flutter Developer (Full-time / Remote)
-        </div>
-        <div style="display:flex;align-items:center;gap:10px;font-size:12.5px">
-          <span style="color:var(--green)">✓</span>Cross-platform App Development (Android, iOS, Web, Desktop)
-        </div>
-        <div style="display:flex;align-items:center;gap:10px;font-size:12.5px">
-          <span style="color:var(--green)">✓</span>Clean Architecture &amp; BLoC Consulting
-        </div>
-        <div style="display:flex;align-items:center;gap:10px;font-size:12.5px">
-          <span style="color:var(--green)">✓</span>Healthcare, Fintech, IoT &amp; Enterprise Apps
-        </div>
-        <div style="display:flex;align-items:center;gap:10px;font-size:12.5px">
-          <span style="color:var(--green)">✓</span>AI Integration &amp; Real-time Systems
-        </div>
-        <div style="display:flex;align-items:center;gap:10px;font-size:12.5px">
-          <span style="color:var(--yellow)">◐</span>React.js / Frontend Web Projects
+    <section id="about">
+      <div class="wrap">
+        <div class="section-label">01 — About</div>
+        <h2 class="section-title">Engineer.<br><em>Builder.</em><br>Shipper.</h2>
+        <p class="lead">
+          I’m <strong>Rakesh Kumar Choudhary</strong> — a Senior Flutter Developer based in Jaipur, India. I design and ship scalable cross-platform apps for Android, iOS, Web, and Desktop, with a focus on maintainable architecture, performance, and production reliability.
+        </p>
+        <p class="lead" style="margin-bottom:0">
+          From face-recognition attendance systems to banking clients and AI-assisted farm tools, I work end-to-end: architecture, integrations, polish, and store releases — bilingual (Hindi &amp; English).
+        </p>
+        <div class="stat-row">
+          <div class="stat"><strong>6+</strong><span>Years mobile</span></div>
+          <div class="stat"><strong>15+</strong><span>Apps shipped</span></div>
+          <div class="stat"><strong>30–40%</strong><span>Perf gains</span></div>
+          <div class="stat"><strong>Jaipur</strong><span>India · IST</span></div>
         </div>
       </div>
+    </section>
 
-      <div style="margin-top:24px;display:flex;gap:10px">
-        <a href="https://docs.google.com/document/d/1Pu0ArSAZ2Hwm7P7tAhbhov8xY5bhCmfJoWnfa2lHb24/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" style="flex:1;justify-content:center">
-          📄 Resume
-        </a>
-        <a href="mailto:choudharyr723@gmail.com" class="btn btn-primary" style="flex:1;justify-content:center">
-          ✉️ Email Rakesh
-        </a>
+    <section id="skills">
+      <div class="wrap">
+        <div class="section-label">02 — Core Competencies</div>
+        <h2 class="section-title">Technical <em>stack</em></h2>
+        <div class="skills-grid">
+          <div class="skill-block">
+            <h3>Flutter &amp; Dart</h3>
+            <div class="tags">
+              <span class="tag">Flutter</span><span class="tag">Dart</span><span class="tag">Android</span><span class="tag">iOS</span><span class="tag">Web</span><span class="tag">Desktop</span>
+            </div>
+          </div>
+          <div class="skill-block">
+            <h3>Architecture</h3>
+            <div class="tags">
+              <span class="tag">Clean Architecture</span><span class="tag">BLoC</span><span class="tag">MVVM</span><span class="tag">Repository</span><span class="tag">Freezed</span>
+            </div>
+          </div>
+          <div class="skill-block">
+            <h3>Frontend Web</h3>
+            <div class="tags">
+              <span class="tag">React.js</span><span class="tag">Redux Toolkit</span><span class="tag">Tailwind CSS</span><span class="tag">Axios</span>
+            </div>
+          </div>
+          <div class="skill-block">
+            <h3>Backend &amp; APIs</h3>
+            <div class="tags">
+              <span class="tag">REST</span><span class="tag">SOAP</span><span class="tag">Firebase</span><span class="tag">WebSockets</span><span class="tag">Dio</span><span class="tag">Firestore</span>
+            </div>
+          </div>
+          <div class="skill-block">
+            <h3>Integrations</h3>
+            <div class="tags">
+              <span class="tag">Payments</span><span class="tag">Google Maps</span><span class="tag">Mapbox</span><span class="tag">Biometrics</span><span class="tag">AI</span><span class="tag">Push</span>
+            </div>
+          </div>
+          <div class="skill-block">
+            <h3>Tools</h3>
+            <div class="tags">
+              <span class="tag">Git</span><span class="tag">Postman</span><span class="tag">Figma</span><span class="tag">Xcode</span><span class="tag">Android Studio</span><span class="tag">Store Release</span>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<footer>
-  <p>Built with ❤️ — <strong style="color:var(--flutter-blue)">Rakesh Kumar Choudhary</strong> · Senior Flutter Developer · Jaipur, India · 2026</p>
-  <p style="margin-top:5px">© 2026 Rakesh Kumar Choudhary &nbsp;·&nbsp; <a href="mailto:choudharyr723@gmail.com">choudharyr723@gmail.com</a></p>
-</footer>
+    <section id="work">
+      <div class="wrap">
+        <div class="section-label">03 — Selected Work</div>
+        <h2 class="section-title">App <em>projects</em></h2>
+        <div class="filters" role="tablist" aria-label="Filter projects">
+          <button class="filter-btn is-active" data-filter="all" type="button">All</button>
+          <button class="filter-btn" data-filter="flutter" type="button">Flutter</button>
+          <button class="filter-btn" data-filter="web" type="button">Web</button>
+          <button class="filter-btn" data-filter="ai" type="button">AI</button>
+        </div>
+
+        <div class="work-list">
+          <a class="work-item has-link" data-cat="web" href="https://sonoek-patient-dashboard-uvqgj.ondigitalocean.app/" target="_blank" rel="noopener noreferrer">
+            <div class="work-num">001</div>
+            <div>
+              <div class="work-title">Sonohaler — Smart Inhaler</div>
+              <p class="work-desc">Healthcare web app for medication tracking, reminders, and provider sharing — Redux Toolkit async flows with a responsive Tailwind UI.</p>
+              <div class="work-meta"><span>React.js</span><span>Redux</span><span>Tailwind</span><span>Live</span></div>
+            </div>
+            <div class="work-arrow">↗</div>
+          </a>
+
+          <a class="work-item has-link" data-cat="flutter" href="https://play.google.com/store/apps/details?id=com.rayz.bcpl&amp;pcampaignid=web_share" target="_blank" rel="noopener noreferrer">
+            <div class="work-num">002</div>
+            <div>
+              <div class="work-title">VIP Club RJ — Channel Partner</div>
+              <p class="work-desc">Cross-platform partner communication for Vivo — mobile and desktop, low-bandwidth reliable messaging without subscription dependency.</p>
+              <div class="work-meta"><span>Flutter</span><span>BLoC</span><span>Play Store</span></div>
+            </div>
+            <div class="work-arrow">↗</div>
+          </a>
+
+          <div class="work-item" data-cat="ai flutter">
+            <div class="work-num">003</div>
+            <div>
+              <div class="work-title">AI Farm Management System</div>
+              <p class="work-desc">Smart farming platform with crop analysis, weather insights, Mapbox geolocation, and AI-based recommendations.</p>
+              <div class="work-meta"><span>Flutter</span><span>Mapbox</span><span>AI</span><span>MVVM</span></div>
+            </div>
+            <div class="work-arrow">↗</div>
+          </div>
+
+          <div class="work-item" data-cat="flutter">
+            <div class="work-num">004</div>
+            <div>
+              <div class="work-title">JANAJAL — Water Delivery</div>
+              <p class="work-desc">Subscription water supply app with delivery tracking, payments, and maps — Clean Architecture + BLoC.</p>
+              <div class="work-meta"><span>Flutter</span><span>BLoC</span><span>Maps</span><span>Payments</span></div>
+            </div>
+            <div class="work-arrow">↗</div>
+          </div>
+
+          <div class="work-item" data-cat="flutter">
+            <div class="work-num">005</div>
+            <div>
+              <div class="work-title">Opco Client Access — Banking</div>
+              <p class="work-desc">Secure banking client for Oppenheimer &amp; Co. with biometric on-device auth and MVVM + Dio.</p>
+              <div class="work-meta"><span>Flutter</span><span>MVVM</span><span>Biometrics</span><span>Fintech</span></div>
+            </div>
+            <div class="work-arrow">↗</div>
+          </div>
+
+          <div class="work-item" data-cat="ai flutter">
+            <div class="work-num">006</div>
+            <div>
+              <div class="work-title">MotorCut — AI Automotive Ads</div>
+              <p class="work-desc">Turns vehicle photos into marketing creatives via backend AI services with resilient async handling.</p>
+              <div class="work-meta"><span>Flutter</span><span>BLoC</span><span>AI</span><span>Dio</span></div>
+            </div>
+            <div class="work-arrow">↗</div>
+          </div>
+
+          <div class="work-item" data-cat="flutter">
+            <div class="work-num">007</div>
+            <div>
+              <div class="work-title">Fever Radio — FM Streaming</div>
+              <p class="work-desc">Real-time audio streaming for continuous FM and music playback with stability-focused media handling.</p>
+              <div class="work-meta"><span>Flutter</span><span>REST</span><span>Media</span></div>
+            </div>
+            <div class="work-arrow">↗</div>
+          </div>
+
+          <div class="work-item" data-cat="flutter">
+            <div class="work-num">008</div>
+            <div>
+              <div class="work-title">Realm Talks — Social Media</div>
+              <p class="work-desc">Firebase social app with posts, likes, comments, notifications, and custom animations via BLoC.</p>
+              <div class="work-meta"><span>Flutter</span><span>Firebase</span><span>BLoC</span></div>
+            </div>
+            <div class="work-arrow">↗</div>
+          </div>
+
+          <div class="work-item" data-cat="flutter">
+            <div class="work-num">009</div>
+            <div>
+              <div class="work-title">Digip — Camera Management</div>
+              <p class="work-desc">Technician workflows for camera installs, tasks, and complaints — Clean Architecture + Freezed.</p>
+              <div class="work-meta"><span>Flutter</span><span>Firebase</span><span>Freezed</span></div>
+            </div>
+            <div class="work-arrow">↗</div>
+          </div>
+
+          <div class="work-item" data-cat="flutter">
+            <div class="work-num">010</div>
+            <div>
+              <div class="work-title">JRRSU — University Portal</div>
+              <p class="work-desc">Student portal for notifications, exam updates, and campus services with Firebase + BLoC.</p>
+              <div class="work-meta"><span>Flutter</span><span>Education</span><span>Firebase</span></div>
+            </div>
+            <div class="work-arrow">↗</div>
+          </div>
+
+          <div class="work-item" data-cat="flutter">
+            <div class="work-num">011</div>
+            <div>
+              <div class="work-title">Physical Storage Optimiser</div>
+              <p class="work-desc">Space and inventory mapping for rooms and storage areas with structured categorization tools.</p>
+              <div class="work-meta"><span>Flutter</span><span>BLoC</span><span>Clean Arch</span></div>
+            </div>
+            <div class="work-arrow">↗</div>
+          </div>
+
+          <div class="work-item" data-cat="ai flutter">
+            <div class="work-num">012</div>
+            <div>
+              <div class="work-title">Face Recognition Attendance</div>
+              <p class="work-desc">Enterprise attendance with live face detection, liveness checks, and timestamped local + Firebase logs.</p>
+              <div class="work-meta"><span>Flutter</span><span>AI</span><span>SQLite</span><span>Enterprise</span></div>
+            </div>
+            <div class="work-arrow">↗</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="wrap">
+        <div class="section-label">04 — Experience</div>
+        <h2 class="section-title">Work <em>history</em></h2>
+        <div class="exp-list">
+          <article class="exp-item">
+            <div>
+              <div class="exp-date">Oct 2023 — Present</div>
+              <div class="exp-type">Full-time</div>
+            </div>
+            <div>
+              <h3 class="exp-role">Flutter Developer</h3>
+              <p class="exp-company">Rayz Infotech · Jaipur, India</p>
+              <ul class="exp-points">
+                <li>Designing scalable Flutter apps for Android, iOS, Web, and Desktop</li>
+                <li>Implementing Clean Architecture with BLoC / MVVM for maintainable codebases</li>
+                <li>Integrating REST, Firebase, payments, and third-party SDKs</li>
+                <li>Optimizing performance, memory, and API handling for production releases</li>
+              </ul>
+            </div>
+          </article>
+          <article class="exp-item">
+            <div>
+              <div class="exp-date">Oct 2019 — Sep 2023</div>
+              <div class="exp-type">Full-time</div>
+            </div>
+            <div>
+              <h3 class="exp-role">Flutter Developer</h3>
+              <p class="exp-company">Digitalries Pvt. Ltd.</p>
+              <ul class="exp-points">
+                <li>Built 10+ production Flutter apps across healthcare, enterprise, and IoT</li>
+                <li>Standardized Clean Architecture + BLoC + Freezed across major projects</li>
+                <li>Shipped a live face-recognition attendance system for enterprise use</li>
+                <li>Owned full lifecycle from design through Play Store / App Store release</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+
+        <div class="section-label" style="margin-top:48px">05 — Education</div>
+        <div class="edu-grid">
+          <div class="edu-item">
+            <h4>Master of Computer Applications (MCA)</h4>
+            <p>2017 · Rajasthan Technical University, Kota · 65%</p>
+          </div>
+          <div class="edu-item">
+            <h4>Bachelor of Computer Applications (BCA)</h4>
+            <p>2014 · University of Rajasthan, Jaipur · 61%</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap contact-panel">
+        <div>
+          <div class="section-label">06 — Get in Touch</div>
+          <h2 class="contact-title">Let’s build something <em>real.</em></h2>
+          <p class="lead" style="margin-bottom:28px">
+            Open to senior Flutter roles, cross-platform mobile contracts, and architecture consulting. Based in Jaipur · available remotely.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="mailto:choudharyr723@gmail.com">Email Rakesh</a>
+            <a class="btn btn-ghost" href="https://docs.google.com/document/d/1Pu0ArSAZ2Hwm7P7tAhbhov8xY5bhCmfJoWnfa2lHb24/edit?usp=sharing" target="_blank" rel="noopener noreferrer">View Resume</a>
+          </div>
+        </div>
+        <div class="contact-links">
+          <a href="tel:+917610908574">+91-7610908574</a>
+          <a href="mailto:choudharyr723@gmail.com">choudharyr723@gmail.com</a>
+          <a href="https://github.com/choudhryr723" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+          <a href="https://www.linkedin.com/in/rakeshkumarchoudhary92/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+          <a href="https://docs.google.com/document/d/1Pu0ArSAZ2Hwm7P7tAhbhov8xY5bhCmfJoWnfa2lHb24/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Resume ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <p>© 2026 Rakesh Kumar Choudhary · Senior Flutter Developer</p>
+    <p><a href="mailto:choudharyr723@gmail.com">choudharyr723@gmail.com</a></p>
+  </footer>
 
 <script>
 (function () {
   var toggle = document.getElementById('nav-toggle');
   var links = document.getElementById('nav-links');
-  if (!toggle || !links) return;
-
-  function setOpen(open) {
-    links.classList.toggle('is-open', open);
-    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-    toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-    toggle.textContent = open ? '✕' : '☰';
+  if (toggle && links) {
+    function setOpen(open) {
+      links.classList.toggle('is-open', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      toggle.textContent = open ? '✕' : '☰';
+    }
+    toggle.addEventListener('click', function () {
+      setOpen(!links.classList.contains('is-open'));
+    });
+    links.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        if ((a.getAttribute('href') || '').startsWith('#')) setOpen(false);
+      });
+    });
   }
 
-  toggle.addEventListener('click', function () {
-    setOpen(!links.classList.contains('is-open'));
-  });
-
-  links.querySelectorAll('a').forEach(function (a) {
-    a.addEventListener('click', function () {
-      if (!a.getAttribute('href').startsWith('#')) return;
-      setOpen(false);
+  var buttons = document.querySelectorAll('.filter-btn');
+  var items = document.querySelectorAll('.work-item');
+  buttons.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      buttons.forEach(function (b) { b.classList.remove('is-active'); });
+      btn.classList.add('is-active');
+      var filter = btn.getAttribute('data-filter');
+      items.forEach(function (item) {
+        var cat = item.getAttribute('data-cat') || '';
+        var show = filter === 'all' || cat.indexOf(filter) !== -1;
+        item.classList.toggle('hidden', !show);
+      });
     });
   });
 })();
 </script>
-
 </body>
 </html>
