@@ -1,1063 +1,973 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Rakesh Kumar Choudhary — Senior Flutter Developer</title>
-<meta name="description" content="Senior Flutter Developer with 6+ years building scalable cross-platform apps for healthcare, fintech, IoT, and enterprise." />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-<style>
-  :root, [data-theme="light"] {
-    --background: #e8eaef;
-    --foreground: #12141a;
-    --muted: #d5d9e2;
-    --muted-foreground: #4a5160;
-    --border: #c4cad6;
-    --accent: #2d6cdf;
-    --accent-foreground: #fff;
-    --card: #f2f4f7;
-    --glow: #2d6cdf29;
-    --mesh-a: #2d6cdf2e;
-    --mesh-b: #4664a01a;
-    --noise-opacity: 0.035;
-    --noise-blend: multiply;
-  }
-  [data-theme="dark"] {
-    --background: #0c0e12;
-    --foreground: #e8eaef;
-    --muted: #1a1e28;
-    --muted-foreground: #9aa3b5;
-    --border: #2a3140;
-    --accent: #8bb4ff;
-    --accent-foreground: #0b1220;
-    --card: #141820;
-    --glow: #8bb4ff1f;
-    --mesh-a: #8bb4ff1f;
-    --mesh-b: #466eb414;
-    --noise-opacity: 0.06;
-    --noise-blend: soft-light;
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rakesh Kumar Choudhary — Senior Flutter Developer</title>
+  <meta name="description" content="Portfolio of Rakesh Kumar Choudhary — Senior Flutter Developer with 6+ years shipping scalable cross-platform apps for healthcare, fintech, IoT, and enterprise." />
+  <meta name="author" content="Rakesh Kumar Choudhary" />
+  <meta property="og:title" content="Rakesh Kumar Choudhary — Senior Flutter Developer" />
+  <meta property="og:description" content="Senior Flutter Developer with 6+ years building production apps across Android, iOS, Web, and Desktop." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='url(%23g)'/%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%2356d4e0'/%3E%3Cstop offset='1' stop-color='%23c084fc'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ctext x='16' y='21' text-anchor='middle' font-family='Space Grotesk,sans-serif' font-size='13' font-weight='700' fill='%23141c28'%3ERK%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --radius: .75rem;
+      --radius-xl: calc(var(--radius) + 4px);
+      --background: oklch(16% .02 250);
+      --foreground: oklch(97% .005 250);
+      --surface: oklch(20% .025 252);
+      --surface-2: oklch(23.5% .03 252);
+      --border: oklch(100% 0 0 / .08);
+      --border-strong: oklch(100% 0 0 / .16);
+      --muted: oklch(24% .02 252);
+      --muted-foreground: oklch(72% .02 250);
+      --primary: oklch(82% .14 205);
+      --primary-foreground: oklch(18% .03 250);
+      --accent: oklch(72% .19 305);
+      --success: oklch(78% .16 155);
+      --gradient-hero: radial-gradient(1200px 600px at 80% -10%, oklch(72% .19 305 / .18), transparent 60%), radial-gradient(900px 500px at 0% 20%, oklch(82% .14 205 / .14), transparent 60%);
+      --gradient-primary: linear-gradient(135deg, oklch(82% .14 205) 0%, oklch(72% .19 305) 100%);
+      --gradient-text: linear-gradient(135deg, oklch(92% .09 205) 0%, oklch(82% .18 305) 100%);
+      --shadow-glow: 0 0 40px -8px oklch(78% .15 200 / .35);
+      --shadow-card: 0 1px 0 0 oklch(100% 0 0 / .04) inset, 0 20px 50px -30px oklch(0% 0 0 / .8);
+    }
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body {
-    font-family: "Plus Jakarta Sans", system-ui, sans-serif;
-    background: var(--background);
-    color: var(--foreground);
-    line-height: 1.65;
-    -webkit-font-smoothing: antialiased;
-  }
-  ::selection { background: color-mix(in srgb, var(--accent) 25%, transparent); color: var(--accent); }
-  a { color: inherit; text-decoration: none; }
-  ul { list-style: none; }
-  button { font: inherit; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+      background: var(--background);
+      color: var(--foreground);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+    button { font: inherit; background: none; border: 0; color: inherit; cursor: pointer; }
 
-  .wrap { width: min(100% - 2rem, 64rem); margin-inline: auto; }
-  @media (min-width: 640px) { .wrap { width: min(100% - 3rem, 64rem); } }
+    .container-x {
+      width: 100%;
+      max-width: 1200px;
+      margin-inline: auto;
+      padding-inline: 1.25rem;
+    }
 
-  .mono {
-    font-family: "IBM Plex Mono", ui-monospace, monospace;
-  }
+    .text-gradient {
+      background: var(--gradient-text);
+      color: transparent;
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
 
-  /* NAV */
-  .nav {
-    position: fixed;
-    inset: 0 0 auto;
-    z-index: 50;
-    transition: background 0.3s, border-color 0.3s, backdrop-filter 0.3s;
-    border-bottom: 1px solid transparent;
-  }
-  .nav.is-scrolled {
-    background: color-mix(in srgb, var(--background) 88%, transparent);
-    backdrop-filter: blur(14px);
-    border-bottom-color: var(--border);
-  }
-  .nav-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    min-height: 4.25rem;
-    gap: 1rem;
-  }
-  .brand {
-    font-weight: 700;
-    font-size: 1.05rem;
-    letter-spacing: -0.03em;
-  }
-  .brand:hover { color: var(--accent); }
-  .nav-links {
-    display: none;
-    align-items: center;
-    gap: 0.15rem;
-  }
-  @media (min-width: 900px) { .nav-links { display: flex; } }
-  .nav-links a {
-    padding: 0.45rem 0.7rem;
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: var(--muted-foreground);
-    transition: color 0.15s;
-  }
-  .nav-links a:hover { color: var(--foreground); }
-  .nav-actions { display: flex; align-items: center; gap: 0.5rem; }
-  .icon-btn {
-    width: 2.25rem;
-    height: 2.25rem;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid var(--border);
-    background: transparent;
-    color: var(--muted-foreground);
-    cursor: pointer;
-    transition: border-color 0.15s, color 0.15s, background 0.15s;
-  }
-  .icon-btn:hover {
-    border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
-    color: var(--accent);
-  }
-  .nav-toggle {
-    display: inline-flex;
-    width: 2.5rem;
-    height: 2.5rem;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid var(--border);
-    background: transparent;
-    color: var(--foreground);
-    cursor: pointer;
-  }
-  @media (min-width: 900px) { .nav-toggle { display: none; } }
+    .chip {
+      border: 1px solid var(--border);
+      color: var(--muted-foreground);
+      background: oklch(100% 0 0 / .03);
+      border-radius: 999px;
+      align-items: center;
+      gap: .4rem;
+      padding: .35rem .7rem;
+      font-size: .78rem;
+      display: inline-flex;
+    }
 
-  .mobile-menu {
-    display: none;
-    position: fixed;
-    inset: 4.25rem 0 auto;
-    z-index: 49;
-    background: var(--background);
-    border-bottom: 1px solid var(--border);
-    padding: 0.75rem 1rem 1.25rem;
-  }
-  .mobile-menu.is-open { display: grid; gap: 0.25rem; }
-  .mobile-menu a {
-    padding: 0.75rem 0.5rem;
-    color: var(--muted-foreground);
-    font-weight: 500;
-  }
-  .mobile-menu a:hover { color: var(--foreground); }
+    .surface-card {
+      background: linear-gradient(180deg, var(--surface) 0%, var(--surface-2) 100%);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-card);
+    }
 
-  /* BUTTONS */
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    padding: 0.75rem 1.5rem;
-    font-size: 0.875rem;
-    font-weight: 500;
-    border: 1px solid transparent;
-    cursor: pointer;
-    transition: filter 0.15s, color 0.15s, border-color 0.15s, background 0.15s;
-  }
-  .btn-primary {
-    background: var(--accent);
-    color: var(--accent-foreground);
-  }
-  .btn-primary:hover { filter: brightness(1.1); }
-  .btn-outline {
-    background: transparent;
-    border-color: var(--border);
-    color: var(--foreground);
-  }
-  .btn-outline:hover {
-    border-color: color-mix(in srgb, var(--accent) 50%, var(--border));
-    color: var(--accent);
-  }
+    .btn-primary {
+      background: var(--gradient-primary);
+      color: var(--primary-foreground);
+      box-shadow: var(--shadow-glow);
+      border-radius: 999px;
+      justify-content: center;
+      align-items: center;
+      gap: .5rem;
+      padding: .7rem 1.25rem;
+      font-size: .9rem;
+      font-weight: 600;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: transform .2s, box-shadow .2s, filter .2s;
+      display: inline-flex;
+    }
+    .btn-primary:hover { filter: brightness(1.05); transform: translateY(-1px); }
 
-  /* HERO */
-  .hero {
-    position: relative;
-    min-height: 100svh;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-    padding: 7rem 0 4rem;
-  }
-  .atmosphere {
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    background-image:
-      radial-gradient(ellipse 80% 60% at 15% 20%, var(--mesh-a), transparent 55%),
-      radial-gradient(ellipse 70% 50% at 85% 15%, var(--mesh-b), transparent 50%),
-      radial-gradient(ellipse 60% 40% at 50% 90%, var(--glow), transparent 55%);
-  }
-  .noise-overlay::before {
-    content: "";
-    pointer-events: none;
-    position: absolute;
-    inset: 0;
-    opacity: var(--noise-opacity);
-    mix-blend-mode: var(--noise-blend);
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    background-repeat: repeat;
-    background-size: 180px 180px;
-  }
-  .hero-loc {
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 0.75rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--accent);
-  }
-  @media (min-width: 640px) { .hero-loc { font-size: 0.875rem; } }
-  .hero h1 {
-    margin-top: 1rem;
-    max-width: 16ch;
-    font-size: clamp(3rem, 10vw, 6rem);
-    font-weight: 800;
-    letter-spacing: -0.045em;
-    line-height: 0.95;
-  }
-  .hero-role {
-    margin-top: 1.25rem;
-    font-size: clamp(1.25rem, 3vw, 1.875rem);
-    color: var(--muted-foreground);
-  }
-  .hero-intro {
-    margin-top: 1.5rem;
-    max-width: 40rem;
-    font-size: clamp(1rem, 2vw, 1.125rem);
-    line-height: 1.7;
-    color: var(--muted-foreground);
-  }
-  .hero-actions {
-    margin-top: 2.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-  @media (min-width: 640px) {
-    .hero-actions { flex-direction: row; align-items: center; gap: 1rem; }
-  }
-  .scroll-hint {
-    margin-top: 4rem;
-    display: flex;
-    justify-content: center;
-  }
-  .scroll-hint a {
-    color: var(--muted-foreground);
-    animation: bounce 1.6s infinite;
-    transition: color 0.15s;
-  }
-  .scroll-hint a:hover { color: var(--accent); }
-  @keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(6px); }
-  }
+    .btn-ghost {
+      color: var(--foreground);
+      border: 1px solid var(--border-strong);
+      background: oklch(100% 0 0 / .03);
+      border-radius: 999px;
+      justify-content: center;
+      align-items: center;
+      gap: .5rem;
+      padding: .7rem 1.25rem;
+      font-size: .9rem;
+      font-weight: 600;
+      white-space: nowrap;
+      transition: background .2s, border-color .2s;
+      display: inline-flex;
+    }
+    .btn-ghost:hover { background: oklch(100% 0 0 / .06); border-color: oklch(100% 0 0 / .24); }
 
-  /* SECTIONS */
-  .section {
-    padding: 5rem 0;
-    scroll-margin-top: 5rem;
-  }
-  @media (min-width: 768px) { .section { padding: 6.5rem 0; } }
-  .section-head {
-    margin-bottom: 2rem;
-  }
-  @media (min-width: 640px) {
-    .section-head {
+    .eyebrow {
+      font-size: .75rem;
+      text-transform: uppercase;
+      letter-spacing: .2em;
+      color: var(--primary);
+      font-weight: 600;
+    }
+    .section-title {
+      margin-top: .75rem;
+      font-size: clamp(1.75rem, 4vw, 2.25rem);
+      font-weight: 700;
+      letter-spacing: -.025em;
+      line-height: 1.15;
+    }
+    .section { padding: 5rem 0; }
+    @media (min-width: 768px) { .section { padding: 7rem 0; } }
+    .section-border { border-top: 1px solid var(--border); }
+    section[id] { scroll-margin-top: 4.5rem; }
+
+    header.nav {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(16px);
+      background: oklch(16% .02 250 / .7);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
       display: flex;
-      align-items: flex-end;
+      align-items: center;
       justify-content: space-between;
+      height: 4rem;
       gap: 1rem;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      font-weight: 700;
+    }
+    .brand-mark {
+      width: 2rem;
+      height: 2rem;
+      border-radius: .5rem;
+      display: grid;
+      place-items: center;
+      color: var(--primary-foreground);
+      background: var(--gradient-primary);
+      font-size: .75rem;
+      font-weight: 700;
+    }
+    .brand-name {
+      display: none;
+      font-size: .875rem;
+      letter-spacing: .02em;
+      color: var(--muted-foreground);
+    }
+    @media (min-width: 640px) { .brand-name { display: inline; } }
+
+    .nav-links {
+      display: none;
+      align-items: center;
+      gap: 1.75rem;
+      font-size: .875rem;
+      color: var(--muted-foreground);
+    }
+    .nav-links a { transition: color .15s; }
+    .nav-links a:hover { color: var(--foreground); }
+    @media (min-width: 900px) { .nav-links { display: flex; } }
+
+    .nav-actions { display: flex; align-items: center; gap: .6rem; flex-shrink: 0; }
+    .nav-cta { display: inline-flex; padding: .55rem 1rem; font-size: .82rem; }
+    @media (min-width: 900px) { .nav-cta { padding: .7rem 1.25rem; font-size: .9rem; } }
+    .nav-toggle {
+      display: grid;
+      place-items: center;
+      width: 2.5rem;
+      height: 2.5rem;
+      border: 1px solid var(--border);
+      border-radius: .6rem;
+    }
+    @media (min-width: 900px) { .nav-toggle { display: none; } }
+    .mobile-menu .btn-primary { margin-top: .5rem; justify-content: center; }
+
+    .mobile-menu {
+      display: none;
+      border-top: 1px solid var(--border);
+      background: var(--background);
+      padding: .75rem 1.25rem 1.1rem;
+    }
+    .mobile-menu.open { display: grid; gap: .15rem; }
+    .mobile-menu a {
+      padding: .7rem .4rem;
+      color: var(--muted-foreground);
+      font-size: .95rem;
+    }
+    .mobile-menu a:hover { color: var(--foreground); }
+    @media (min-width: 900px) { .mobile-menu { display: none !important; } }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: var(--gradient-hero);
+    }
+    .hero-grid {
+      display: grid;
+      gap: 3rem;
+      padding: 5rem 0;
+      align-items: center;
+    }
+    @media (min-width: 768px) {
+      .hero-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        padding: 7rem 0;
+      }
+    }
+
+    .hero h1 {
+      font-size: clamp(2.25rem, 6vw, 3.75rem);
+      font-weight: 700;
+      letter-spacing: -.03em;
+      line-height: 1.05;
+    }
+    .hero-role {
+      margin-top: 1rem;
+      font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+      color: var(--muted-foreground);
+    }
+    .hero-intro {
+      margin-top: 1.25rem;
+      max-width: 32rem;
+      color: var(--muted-foreground);
+    }
+    .hero-intro strong { color: var(--foreground); font-weight: 600; }
+    .hero-actions {
+      margin-top: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: .75rem;
+    }
+    .hero-stats {
+      margin-top: 2.5rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: .75rem;
+      max-width: 28rem;
+    }
+    .stat-value {
+      font-size: clamp(1.5rem, 3vw, 1.875rem);
+      font-weight: 700;
+    }
+    .stat-label {
+      margin-top: .25rem;
+      font-size: .72rem;
+      line-height: 1.35;
+      color: var(--muted-foreground);
+    }
+
+    .portrait-wrap {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+    @media (min-width: 768px) { .portrait-wrap { justify-content: flex-end; } }
+    .portrait-glow {
+      position: absolute;
+      inset: -2rem;
+      border-radius: 999px;
+      filter: blur(48px);
+      opacity: .4;
+      background: var(--gradient-primary);
+    }
+    .portrait {
+      position: relative;
+      animation: float-slow 6s ease-in-out infinite;
+    }
+    .portrait-ring {
+      width: 16rem;
+      height: 16rem;
+      border-radius: 999px;
+      padding: 3px;
+      background: var(--gradient-primary);
+    }
+    @media (min-width: 768px) {
+      .portrait-ring { width: 20rem; height: 20rem; }
+    }
+    .portrait-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: 999px;
+      border: 4px solid var(--background);
+      background:
+        radial-gradient(circle at 30% 25%, oklch(82% .14 205 / .35), transparent 45%),
+        radial-gradient(circle at 70% 80%, oklch(72% .19 305 / .4), transparent 50%),
+        linear-gradient(180deg, oklch(24% .03 250), oklch(16% .02 250));
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+    }
+    .portrait-initials {
+      font-size: clamp(3.5rem, 8vw, 4.75rem);
+      font-weight: 700;
+      letter-spacing: -.04em;
+      line-height: 1;
+      background: var(--gradient-text);
+      color: transparent;
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+    .float-card {
+      position: absolute;
+      padding: .75rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      z-index: 2;
+    }
+    .float-card.bottom { bottom: -1rem; left: -1rem; }
+    .float-card.top { top: -.5rem; right: -.5rem; }
+    .float-card .emoji { font-size: 1.5rem; line-height: 1; }
+    .float-card .title { font-size: .75rem; font-weight: 600; }
+    .float-card .sub { font-size: .75rem; color: var(--muted-foreground); }
+
+    .about-grid {
+      display: grid;
+      gap: 2rem;
+      margin-top: 2.5rem;
+    }
+    @media (min-width: 768px) {
+      .about-grid { grid-template-columns: 3fr 2fr; gap: 2rem; }
+    }
+    .about-copy { padding: 2rem; }
+    .about-copy p { color: var(--muted-foreground); }
+    .about-copy p + p { margin-top: 1rem; }
+    .about-copy strong { color: var(--foreground); font-weight: 600; }
+    .about-tiles {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .about-tile { padding: 1.25rem; }
+    .about-tile .emoji { font-size: 1.5rem; }
+    .about-tile h3 { margin-top: .75rem; font-size: 1rem; }
+    .about-tile p { margin-top: .25rem; font-size: .75rem; color: var(--muted-foreground); }
+
+    .skills-grid {
+      display: grid;
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+    @media (min-width: 768px) { .skills-grid { grid-template-columns: 1fr 1fr; } }
+    .skill-card { padding: 1.5rem; }
+    .skill-card h3 { font-size: 1.125rem; margin-bottom: 1.25rem; }
+    .skill-row + .skill-row { margin-top: 1rem; }
+    .skill-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: .875rem;
+      margin-bottom: .4rem;
+    }
+    .skill-meta span:last-child { font-size: .75rem; color: var(--muted-foreground); }
+    .bar {
+      height: .375rem;
+      border-radius: 999px;
+      background: var(--muted);
+      overflow: hidden;
+    }
+    .bar > span {
+      display: block;
+      height: 100%;
+      width: 0;
+      border-radius: 999px;
+      background: var(--gradient-primary);
+      transition: width 1.1s ease;
+    }
+    .bar.is-in > span { width: var(--w); }
+
+    .lede {
+      margin-top: 1rem;
+      color: var(--muted-foreground);
+      max-width: 42rem;
+    }
+    .projects-grid {
+      display: grid;
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+    @media (min-width: 768px) { .projects-grid { grid-template-columns: 1fr 1fr; } }
+    .project {
+      position: relative;
+      overflow: hidden;
+      padding: 1.5rem;
+      display: block;
+      transition: border-color .2s;
+    }
+    .project:hover { border-color: var(--border-strong); }
+    .project-blob {
+      position: absolute;
+      top: -4rem;
+      right: -4rem;
+      width: 12rem;
+      height: 12rem;
+      border-radius: 999px;
+      filter: blur(48px);
+      opacity: .7;
+      pointer-events: none;
+    }
+    .project-top {
+      position: relative;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: .75rem;
+    }
+    .project-emoji { font-size: 2.25rem; line-height: 1; }
+    .project h3 {
+      position: relative;
+      margin-top: 1rem;
+      font-size: 1.25rem;
+      transition: color .2s;
+    }
+    .project:hover h3 {
+      background: var(--gradient-text);
+      color: transparent;
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+    .project p {
+      position: relative;
+      margin-top: .5rem;
+      font-size: .875rem;
+      color: var(--muted-foreground);
+    }
+    .tags {
+      position: relative;
+      margin-top: 1.25rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+    }
+    .project-cta {
+      position: relative;
+      margin-top: 1.25rem;
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .875rem;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .timeline {
+      position: relative;
+      margin-top: 2.5rem;
+    }
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 1rem;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: var(--border);
+    }
+    @media (min-width: 768px) {
+      .timeline::before { left: 50%; }
+    }
+    .tl-item {
+      position: relative;
+      padding-left: 3rem;
       margin-bottom: 2.5rem;
     }
-  }
-  .eyebrow {
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 0.75rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 0.75rem;
-  }
-  .section-title {
-    font-size: clamp(1.875rem, 4vw, 3rem);
-    font-weight: 800;
-    letter-spacing: -0.035em;
-    line-height: 1.1;
-  }
-  .section-sub {
-    margin-top: 0.75rem;
-    color: var(--muted-foreground);
-    max-width: 28rem;
-  }
-  @media (min-width: 640px) {
-    .section-sub { margin-top: 0; text-align: right; }
-  }
-
-  /* ABOUT */
-  .about-grid {
-    display: grid;
-    gap: 2.5rem;
-  }
-  @media (min-width: 768px) {
-    .about-grid {
-      grid-template-columns: 7fr 5fr;
-      gap: 3rem;
-      align-items: start;
+    @media (min-width: 768px) {
+      .tl-item {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        padding-left: 0;
+      }
+      .tl-item.right .tl-card-wrap { grid-column: 2; }
+      .tl-item.left .tl-card-wrap { grid-column: 1; text-align: right; }
+      .tl-item.left .tl-card { text-align: right; display: inline-block; }
+      .tl-item.left ul { text-align: left; }
     }
-  }
-  .about-copy {
-    display: grid;
-    gap: 1.15rem;
-    color: var(--muted-foreground);
-    font-size: 1.05rem;
-  }
-  .about-copy strong { color: var(--foreground); font-weight: 600; }
-  .stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-  }
-  @media (min-width: 768px) {
-    .stats {
-      grid-template-columns: 1fr;
+    .tl-dot {
+      position: absolute;
+      left: 1rem;
+      top: .5rem;
+      width: .75rem;
+      height: .75rem;
+      border-radius: 999px;
+      background: var(--primary);
+      box-shadow: 0 0 0 4px var(--background);
+      transform: translateX(-50%);
+    }
+    @media (min-width: 768px) {
+      .tl-dot { left: 50%; }
+    }
+    .tl-card { padding: 1.5rem; }
+    .tl-date {
+      font-size: .75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--primary);
+    }
+    .tl-card h3 { margin-top: .25rem; font-size: 1.125rem; }
+    .tl-company { font-size: .875rem; color: var(--muted-foreground); }
+    .tl-card ul {
+      margin-top: 1rem;
+      display: grid;
+      gap: .4rem;
+      font-size: .875rem;
+      color: var(--muted-foreground);
+      list-style: disc;
+      padding-left: 1.1rem;
+    }
+
+    .edu-grid {
+      display: grid;
+      gap: 1.5rem;
+      margin-top: 4rem;
+    }
+    @media (min-width: 768px) { .edu-grid { grid-template-columns: 1fr 1fr; } }
+    .edu-card { padding: 1.5rem; }
+    .edu-card h3 { margin-top: .5rem; }
+    .edu-card p { margin-top: .25rem; font-size: .875rem; color: var(--muted-foreground); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 2.5rem;
+    }
+    @media (min-width: 768px) { .contact-grid { grid-template-columns: repeat(4, 1fr); } }
+    .contact-card {
+      padding: 1.5rem;
+      transition: border-color .2s;
+    }
+    .contact-card:hover { border-color: var(--border-strong); }
+    .contact-card .emoji { font-size: 1.5rem; }
+    .contact-card .label {
+      margin-top: .75rem;
+      font-size: .75rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--muted-foreground);
+    }
+    .contact-card .value { margin-top: .25rem; font-weight: 500; word-break: break-word; }
+
+    .cta-banner {
+      margin-top: 1.5rem;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
       gap: 1.5rem;
     }
-  }
-  .stat-value {
-    font-size: clamp(1.75rem, 4vw, 2.25rem);
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    color: var(--accent);
-  }
-  .stat-label {
-    margin-top: 0.2rem;
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--muted-foreground);
-  }
-
-  /* EXPERIENCE */
-  .exp-list { display: grid; gap: 2.75rem; }
-  .exp-item {
-    position: relative;
-    padding-left: 2rem;
-  }
-  @media (min-width: 640px) { .exp-item { padding-left: 2.25rem; } }
-  .exp-item::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0.35rem;
-    width: 0.9rem;
-    height: 0.9rem;
-    border: 2px solid var(--accent);
-    background: var(--background);
-  }
-  .exp-item:not(:last-child)::after {
-    content: "";
-    position: absolute;
-    left: 0.4rem;
-    top: 1.4rem;
-    bottom: -2.75rem;
-    width: 1px;
-    background: var(--border);
-  }
-  .exp-top {
-    display: flex;
-    flex-direction: column;
-    gap: 0.35rem;
-  }
-  @media (min-width: 640px) {
-    .exp-top {
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 1rem;
+    @media (min-width: 768px) {
+      .cta-banner {
+        padding: 2rem;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
     }
-  }
-  .exp-role {
-    font-size: clamp(1.15rem, 2vw, 1.35rem);
-    font-weight: 700;
-    letter-spacing: -0.02em;
-  }
-  .exp-company {
-    margin-top: 0.15rem;
-    color: var(--accent);
-    font-weight: 600;
-    font-size: 0.95rem;
-  }
-  .exp-meta {
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--muted-foreground);
-  }
-  @media (min-width: 640px) { .exp-meta { text-align: right; } }
-  .exp-links {
-    margin-top: 0.5rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-  }
-  .exp-links a {
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 0.75rem;
-    color: var(--muted-foreground);
-    transition: color 0.15s;
-  }
-  .exp-links a:hover { color: var(--accent); }
-  .exp-bullets {
-    margin-top: 0.9rem;
-    display: grid;
-    gap: 0.55rem;
-  }
-  .exp-bullets li {
-    display: flex;
-    gap: 0.75rem;
-    color: var(--muted-foreground);
-    font-size: 0.95rem;
-    line-height: 1.55;
-  }
-  .exp-bullets li::before {
-    content: "";
-    margin-top: 0.55rem;
-    width: 0.28rem;
-    height: 0.28rem;
-    border-radius: 999px;
-    background: var(--accent);
-    flex-shrink: 0;
-  }
+    .cta-banner h3 { font-size: 1.125rem; }
+    .cta-banner p { margin-top: .25rem; font-size: .875rem; color: var(--muted-foreground); }
 
-  /* SKILLS */
-  .skills-grid {
-    display: grid;
-    gap: 1.75rem;
-  }
-  @media (min-width: 640px) {
-    .skills-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
-  }
-  @media (min-width: 900px) {
-    .skills-grid { grid-template-columns: repeat(3, 1fr); }
-  }
-  .skill-group h3 {
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--muted-foreground);
-    margin-bottom: 0.85rem;
-  }
-  .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-  .tag {
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 0.75rem;
-    padding: 0.35rem 0.65rem;
-    border: 1px solid var(--border);
-    color: var(--muted-foreground);
-    transition: border-color 0.15s, color 0.15s;
-  }
-  .tag:hover {
-    border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
-    color: var(--foreground);
-  }
-
-  /* WORK */
-  .work-list {
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-  }
-  .work-item {
-    display: grid;
-    gap: 0.75rem;
-    padding: 1.5rem 0;
-    border-bottom: 1px solid var(--border);
-    transition: color 0.15s;
-  }
-  .work-item:last-child { border-bottom: 0; }
-  @media (min-width: 640px) {
-    .work-item {
-      grid-template-columns: 4.5rem 1fr auto;
-      align-items: center;
-      gap: 2rem;
-      padding: 1.65rem 0;
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 0;
     }
-  }
-  .work-num {
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 0.75rem;
-    color: color-mix(in srgb, var(--muted-foreground) 70%, transparent);
-  }
-  .work-title {
-    font-size: clamp(1.05rem, 2vw, 1.25rem);
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    transition: color 0.15s;
-  }
-  .work-item:hover .work-title { color: var(--accent); }
-  .work-desc {
-    margin-top: 0.35rem;
-    color: var(--muted-foreground);
-    font-size: 0.95rem;
-    max-width: 40rem;
-  }
-  .work-meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-  }
-  .work-meta span {
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 0.68rem;
-    padding: 0.2rem 0.45rem;
-    border: 1px solid var(--border);
-    color: var(--muted-foreground);
-  }
-  .work-arrow {
-    color: var(--muted-foreground);
-    opacity: 0;
-    transition: opacity 0.15s, color 0.15s;
-    justify-self: end;
-  }
-  .work-item:hover .work-arrow {
-    opacity: 1;
-    color: var(--accent);
-  }
-  a.work-item { cursor: pointer; }
-  .work-featured {
-    display: block;
-    margin-bottom: 1.5rem;
-    border: 1px solid var(--border);
-    background: color-mix(in srgb, var(--card) 70%, transparent);
-    padding: 1.5rem;
-    transition: border-color 0.2s;
-  }
-  @media (min-width: 640px) { .work-featured { padding: 2rem 2.25rem; } }
-  .work-featured:hover { border-color: color-mix(in srgb, var(--accent) 40%, var(--border)); }
-  .work-featured .eyebrow { margin-bottom: 0.5rem; }
-  .work-featured h3 {
-    font-size: clamp(1.35rem, 3vw, 1.75rem);
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    transition: color 0.15s;
-  }
-  .work-featured:hover h3 { color: var(--accent); }
-  .work-featured p {
-    margin-top: 0.75rem;
-    color: var(--muted-foreground);
-    max-width: 40rem;
-  }
-  .work-featured .tags { margin-top: 1.1rem; }
-  .work-featured .cta {
-    margin-top: 1.1rem;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-    color: var(--accent);
-    font-size: 0.9rem;
-    font-weight: 500;
-  }
-
-  /* EDUCATION */
-  .edu-card {
-    border-left: 2px solid var(--accent);
-    padding-left: 1.25rem;
-  }
-  .edu-card + .edu-card { margin-top: 2rem; }
-  .edu-degree {
-    font-size: 1.25rem;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-  }
-  .edu-school {
-    margin-top: 0.25rem;
-    color: var(--accent);
-    font-weight: 600;
-  }
-  .edu-meta {
-    margin-top: 0.35rem;
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 0.75rem;
-    color: var(--muted-foreground);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-  }
-
-  /* CONTACT */
-  .contact-box {
-    max-width: 40rem;
-  }
-  .contact-lead {
-    margin-top: 1rem;
-    color: var(--muted-foreground);
-    font-size: 1.05rem;
-    max-width: 36rem;
-  }
-  .contact-actions {
-    margin-top: 2rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-  }
-  .contact-links {
-    margin-top: 2rem;
-    display: grid;
-    gap: 0;
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-  }
-  .contact-links a {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    padding: 1rem 0;
-    border-bottom: 1px solid var(--border);
-    transition: color 0.15s;
-  }
-  .contact-links a:last-child { border-bottom: 0; }
-  .contact-links a:hover { color: var(--accent); }
-  .contact-links strong { font-weight: 600; }
-  .contact-links span {
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 0.8rem;
-    color: var(--muted-foreground);
-  }
-
-  footer {
-    padding: 2rem 0 2.5rem;
-    border-top: 1px solid var(--border);
-  }
-  .footer-inner {
-    display: flex;
-    flex-direction: column;
-    gap: 0.35rem;
-    color: var(--muted-foreground);
-    font-size: 0.8rem;
-  }
-  @media (min-width: 640px) {
     .footer-inner {
-      flex-direction: row;
-      justify-content: space-between;
+      display: flex;
+      flex-direction: column;
       align-items: center;
+      gap: .75rem;
+      font-size: .875rem;
+      color: var(--muted-foreground);
     }
-  }
+    @media (min-width: 768px) {
+      .footer-inner {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
+    footer a:hover { color: var(--foreground); }
 
-  /* MOTION */
-  .reveal {
-    opacity: 0;
-    transform: translateY(16px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
-  .reveal.is-in { opacity: 1; transform: none; }
-  .hero .reveal:nth-child(1) { transition-delay: 0.05s; }
-  .hero .reveal:nth-child(2) { transition-delay: 0.12s; }
-  .hero .reveal:nth-child(3) { transition-delay: 0.18s; }
-  .hero .reveal:nth-child(4) { transition-delay: 0.24s; }
-  .hero .reveal:nth-child(5) { transition-delay: 0.3s; }
-</style>
+    .fade-up { animation: fade-up .7s ease-out both; }
+    @keyframes fade-up {
+      from { opacity: 0; transform: translateY(14px); }
+      to { opacity: 1; transform: none; }
+    }
+    @keyframes float-slow {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .portrait, .fade-up { animation: none; }
+      .bar > span { transition: none; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
 </head>
 <body>
-  <header class="nav" id="nav">
-    <div class="wrap nav-inner">
-      <a class="brand" href="#top">Rakesh Kumar Choudhary</a>
+  <header class="nav">
+    <div class="container-x nav-inner">
+      <a class="brand" href="#top">
+        <span class="brand-mark">RK</span>
+        <span class="brand-name">Rakesh Kumar Choudhary</span>
+      </a>
       <nav class="nav-links" aria-label="Primary">
         <a href="#about">About</a>
-        <a href="#experience">Experience</a>
         <a href="#skills">Skills</a>
-        <a href="#work">Work</a>
-        <a href="#education">Education</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
         <a href="#contact">Contact</a>
       </nav>
       <div class="nav-actions">
-        <a class="icon-btn" href="https://github.com/choudhryr723" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.75 5.4.75 11.74c0 5.07 3.29 9.36 7.86 10.88.57.1.78-.25.78-.56 0-.28-.01-1.03-.02-2.02-3.2.7-3.88-1.54-3.88-1.54-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.16.08 1.78 1.2 1.78 1.2 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.68 0-1.25.45-2.27 1.19-3.07-.12-.29-.52-1.46.11-3.05 0 0 .98-.31 3.2 1.17a11.1 11.1 0 0 1 5.82 0c2.22-1.48 3.2-1.17 3.2-1.17.63 1.59.23 2.76.11 3.05.74.8 1.19 1.82 1.19 3.07 0 4.41-2.69 5.39-5.25 5.67.41.36.77 1.08.77 2.17 0 1.57-.01 2.84-.01 3.22 0 .31.2.67.79.56 4.56-1.52 7.85-5.81 7.85-10.88C23.25 5.4 18.35.5 12 .5z"/></svg>
-        </a>
-        <a class="icon-btn" href="https://www.linkedin.com/in/rakeshkumarchoudhary92/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.025-3.036-1.851-3.036-1.853 0-2.136 1.445-2.136 2.939v5.666H9.352V9h3.414v1.561h.049c.476-.9 1.637-1.849 3.37-1.849 3.603 0 4.268 2.372 4.268 5.455v6.285zM5.337 7.433c-1.144 0-2.066-.926-2.066-2.065 0-1.14.922-2.066 2.066-2.066 1.14 0 2.064.926 2.064 2.066 0 1.139-.924 2.065-2.064 2.065zM6.999 20.452H3.674V9h3.325v11.452z"/></svg>
-        </a>
-        <button class="icon-btn" id="theme-toggle" type="button" aria-label="Toggle theme">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
-        </button>
+        <a class="btn-primary nav-cta" href="#contact">Hire Me</a>
         <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
         </button>
       </div>
     </div>
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </div>
   </header>
-
-  <div class="mobile-menu" id="mobile-menu">
-    <a href="#about">About</a>
-    <a href="#experience">Experience</a>
-    <a href="#skills">Skills</a>
-    <a href="#work">Work</a>
-    <a href="#education">Education</a>
-    <a href="#contact">Contact</a>
-  </div>
 
   <main id="top">
     <section class="hero">
-      <div class="atmosphere noise-overlay" aria-hidden="true"></div>
-      <div class="wrap">
-        <p class="hero-loc reveal">Jaipur, India</p>
-        <h1 class="reveal">Rakesh Kumar Choudhary</h1>
-        <p class="hero-role reveal">Senior Flutter Developer</p>
-        <p class="hero-intro reveal">
-          Senior Flutter Developer with 6+ years of experience building scalable cross-platform apps for healthcare, fintech, IoT, and enterprise. Experienced in Clean Architecture, BLoC/MVVM, Firebase, realtime systems, and production store releases.
-        </p>
-        <div class="hero-actions reveal">
-          <a class="btn btn-primary" href="https://docs.google.com/document/d/1Pu0ArSAZ2Hwm7P7tAhbhov8xY5bhCmfJoWnfa2lHb24/edit?usp=sharing" target="_blank" rel="noopener noreferrer">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 15V3"/><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/></svg>
-            Download Resume
-          </a>
-          <a class="btn btn-outline" href="#contact">Get In Touch</a>
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="container-x hero-grid">
+        <div class="fade-up">
+          <span class="chip" style="margin-bottom: 1.5rem;">
+            <span style="width:.375rem;height:.375rem;border-radius:999px;background:var(--success);display:inline-block;"></span>
+            Available for opportunities
+          </span>
+          <h1>Hi, I'm <span class="text-gradient">Rakesh Kumar Choudhary</span></h1>
+          <p class="hero-role">Senior Flutter Developer • Cross-Platform Engineer</p>
+          <p class="hero-intro">
+            Senior Flutter Developer with <strong>6+ years</strong> of hands-on experience building scalable cross-platform apps for healthcare, fintech, IoT, and enterprise. I ship real products — from Play Store releases to AI-powered mobile systems — with Clean Architecture, BLoC/MVVM, and production-grade delivery.
+          </p>
+          <div class="hero-actions">
+            <a class="btn-primary" href="#projects">View My Work</a>
+            <a class="btn-ghost" href="#contact">Get in Touch</a>
+          </div>
+          <div class="hero-stats">
+            <div>
+              <div class="stat-value text-gradient">6+</div>
+              <div class="stat-label">Years Experience</div>
+            </div>
+            <div>
+              <div class="stat-value text-gradient">5+</div>
+              <div class="stat-label">Apps on Play Store</div>
+            </div>
+            <div>
+              <div class="stat-value text-gradient">15+</div>
+              <div class="stat-label">Projects Shipped</div>
+            </div>
+          </div>
         </div>
-        <div class="scroll-hint">
-          <a href="#about" aria-label="Scroll to about">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
-          </a>
+
+        <div class="portrait-wrap">
+          <div class="portrait-glow" aria-hidden="true"></div>
+          <div class="portrait">
+            <div class="portrait-ring">
+              <div class="portrait-inner" aria-hidden="true"><span class="portrait-initials">RK</span></div>
+            </div>
+            <div class="float-card surface-card bottom">
+              <span class="emoji">🚀</span>
+              <div>
+                <div class="title">Shipping production</div>
+                <div class="sub">Android, iOS, Web, Desktop</div>
+              </div>
+            </div>
+            <div class="float-card surface-card top">
+              <span class="emoji">📱</span>
+              <div>
+                <div class="title">Live on Play Store</div>
+                <div class="sub">5+ apps published</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
     <section class="section" id="about">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <div>
-            <p class="eyebrow">About Me</p>
-            <h2 class="section-title">A bit about who I am and what I do</h2>
-          </div>
-        </div>
+      <div class="container-x">
+        <div class="eyebrow">About Me</div>
+        <h2 class="section-title">Crafting mobile products that ship</h2>
         <div class="about-grid">
-          <div class="about-copy reveal">
+          <div class="surface-card about-copy">
             <p>
-              I'm a Senior Flutter Developer based in <strong>Jaipur, India</strong>, currently building production apps at <strong>Rayz Infotech</strong>. I design and ship cross-platform products for Android, iOS, Web, and Desktop — with Clean Architecture, BLoC/MVVM, Firebase, realtime systems, and store-ready releases.
+              I'm a Senior Flutter Developer based in <strong>Jaipur, India</strong>, currently building production apps at <strong>Rayz Infotech</strong>. I specialize in <strong>Flutter, Firebase, and AI-integrated experiences</strong> across Android, iOS, Web, and Desktop.
             </p>
             <p>
-              Previously at Digitalries, I delivered 10+ production Flutter apps across healthcare, enterprise, and IoT, owned full store release lifecycles, and standardized architecture patterns that kept large codebases maintainable.
+              Over the last 6+ years I've shipped 15+ products — healthcare platforms, partner communication apps, fintech clients, and AI-powered tools — with <strong>Clean Architecture</strong>, BLoC/MVVM, and store-ready release pipelines.
             </p>
             <p>
-              I'm focused on scalable Flutter architecture, AI-assisted product features, and shipping high-impact mobile systems that hold up in production.
+              I work in an <strong>AI-native</strong> development style using tools like Cursor to move faster without sacrificing quality, and I own the full path from architecture to Play Store / App Store launch.
             </p>
           </div>
-          <div class="stats reveal">
-            <div>
-              <div class="stat-value">6+</div>
-              <div class="stat-label">Years Experience</div>
+          <div class="about-tiles">
+            <div class="surface-card about-tile">
+              <div class="emoji">📱</div>
+              <h3>Mobile First</h3>
+              <p>Cross-platform apps with Flutter</p>
             </div>
-            <div>
-              <div class="stat-value">15+</div>
-              <div class="stat-label">Apps Shipped</div>
+            <div class="surface-card about-tile">
+              <div class="emoji">🏗️</div>
+              <h3>Clean Architecture</h3>
+              <p>BLoC, MVVM, and Freezed models</p>
             </div>
-            <div>
-              <div class="stat-value">4</div>
-              <div class="stat-label">Platforms</div>
+            <div class="surface-card about-tile">
+              <div class="emoji">🤖</div>
+              <h3>AI Integrated</h3>
+              <p>Production AI features that ship</p>
+            </div>
+            <div class="surface-card about-tile">
+              <div class="emoji">🔁</div>
+              <h3>Store Ready</h3>
+              <p>Play Store &amp; App Store releases</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section" id="experience">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <div>
-            <p class="eyebrow">Experience</p>
-            <h2 class="section-title">My professional journey so far</h2>
-          </div>
-        </div>
-        <div class="exp-list">
-          <article class="exp-item reveal">
-            <div class="exp-top">
-              <div>
-                <h3 class="exp-role">Flutter Developer</h3>
-                <p class="exp-company">Rayz Infotech</p>
-              </div>
-              <div class="exp-meta">
-                Oct 2023 – Present<br />
-                Jaipur, India
-              </div>
-            </div>
-            <ul class="exp-bullets">
-              <li>Design and deliver scalable Flutter apps for Android, iOS, Web, and Desktop.</li>
-              <li>Own Clean Architecture with BLoC/MVVM, repository patterns, and Freezed models.</li>
-              <li>Integrate REST APIs, Firebase, payments, maps, biometrics, and push notifications.</li>
-              <li>Optimize production performance, release readiness, and cross-platform consistency.</li>
-              <li>Ship products across healthcare, partner communication, AI, and enterprise workflows.</li>
-            </ul>
-          </article>
-
-          <article class="exp-item reveal">
-            <div class="exp-top">
-              <div>
-                <h3 class="exp-role">Flutter Developer</h3>
-                <p class="exp-company">Digitalries Pvt. Ltd.</p>
-              </div>
-              <div class="exp-meta">
-                Oct 2019 – Sep 2023<br />
-                India
-              </div>
-            </div>
-            <ul class="exp-bullets">
-              <li>Built 10+ production Flutter apps across healthcare, enterprise, and IoT domains.</li>
-              <li>Standardized Clean Architecture + BLoC + Freezed for maintainable delivery.</li>
-              <li>Shipped face-recognition attendance with live detection and liveness checks.</li>
-              <li>Owned full Play Store / App Store release lifecycle from feature work to launch.</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="skills">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <div>
-            <p class="eyebrow">Skills</p>
-            <h2 class="section-title">Technologies and tools I work with</h2>
-          </div>
-        </div>
+    <section class="section section-border" id="skills">
+      <div class="container-x">
+        <div class="eyebrow">Skills &amp; Expertise</div>
+        <h2 class="section-title">A modern mobile engineering toolkit</h2>
         <div class="skills-grid">
-          <div class="skill-group reveal">
-            <h3>Mobile</h3>
-            <div class="tags">
-              <span class="tag">Flutter</span><span class="tag">Dart</span><span class="tag">Android</span><span class="tag">iOS</span><span class="tag">Web</span><span class="tag">Desktop</span><span class="tag">BLoC</span><span class="tag">MVVM</span><span class="tag">Firebase</span>
-            </div>
+          <div class="surface-card skill-card">
+            <h3>Mobile Development</h3>
+            <div class="skill-row"><div class="skill-meta"><span>Flutter</span><span>95%</span></div><div class="bar" data-w="95%"><span></span></div></div>
+            <div class="skill-row"><div class="skill-meta"><span>Dart</span><span>94%</span></div><div class="bar" data-w="94%"><span></span></div></div>
+            <div class="skill-row"><div class="skill-meta"><span>Cross-Platform (iOS / Android / Web)</span><span>92%</span></div><div class="bar" data-w="92%"><span></span></div></div>
+            <div class="skill-row"><div class="skill-meta"><span>BLoC / MVVM</span><span>93%</span></div><div class="bar" data-w="93%"><span></span></div></div>
+            <div class="skill-row"><div class="skill-meta"><span>REST APIs</span><span>90%</span></div><div class="bar" data-w="90%"><span></span></div></div>
           </div>
-          <div class="skill-group reveal">
-            <h3>Architecture</h3>
-            <div class="tags">
-              <span class="tag">Clean Architecture</span><span class="tag">Repository</span><span class="tag">Freezed</span><span class="tag">Dio</span><span class="tag">REST APIs</span>
-            </div>
+          <div class="surface-card skill-card">
+            <h3>Backend &amp; Cloud</h3>
+            <div class="skill-row"><div class="skill-meta"><span>Firebase (Auth, Firestore, FCM)</span><span>90%</span></div><div class="bar" data-w="90%"><span></span></div></div>
+            <div class="skill-row"><div class="skill-meta"><span>Push Notifications</span><span>88%</span></div><div class="bar" data-w="88%"><span></span></div></div>
+            <div class="skill-row"><div class="skill-meta"><span>WebSockets</span><span>82%</span></div><div class="bar" data-w="82%"><span></span></div></div>
+            <div class="skill-row"><div class="skill-meta"><span>SQLite / MySQL</span><span>80%</span></div><div class="bar" data-w="80%"><span></span></div></div>
           </div>
-          <div class="skill-group reveal">
-            <h3>Frontend / Web</h3>
-            <div class="tags">
-              <span class="tag">React.js</span><span class="tag">Redux Toolkit</span><span class="tag">Tailwind CSS</span><span class="tag">Axios</span><span class="tag">JavaScript</span>
-            </div>
+          <div class="surface-card skill-card">
+            <h3>Architecture &amp; Frontend</h3>
+            <div class="skill-row"><div class="skill-meta"><span>Clean Architecture</span><span>93%</span></div><div class="bar" data-w="93%"><span></span></div></div>
+            <div class="skill-row"><div class="skill-meta"><span>Repository + Freezed</span><span>90%</span></div><div class="bar" data-w="90%"><span></span></div></div>
+            <div class="skill-row"><div class="skill-meta"><span>React.js / Redux Toolkit</span><span>82%</span></div><div class="bar" data-w="82%"><span></span></div></div>
+            <div class="skill-row"><div class="skill-meta"><span>Maps, Payments, Biometrics</span><span>88%</span></div><div class="bar" data-w="88%"><span></span></div></div>
           </div>
-          <div class="skill-group reveal">
-            <h3>Data / Backend</h3>
-            <div class="tags">
-              <span class="tag">Firebase</span><span class="tag">WebSockets</span><span class="tag">SQLite</span><span class="tag">MySQL</span><span class="tag">Push Notifications</span>
-            </div>
-          </div>
-          <div class="skill-group reveal">
-            <h3>Integrations</h3>
-            <div class="tags">
-              <span class="tag">Payments</span><span class="tag">Google Maps</span><span class="tag">Mapbox</span><span class="tag">Biometrics</span><span class="tag">AI Features</span>
-            </div>
-          </div>
-          <div class="skill-group reveal">
-            <h3>Tools</h3>
-            <div class="tags">
-              <span class="tag">Git</span><span class="tag">Postman</span><span class="tag">Figma</span><span class="tag">Xcode</span><span class="tag">Android Studio</span><span class="tag">Cursor</span>
-            </div>
+          <div class="surface-card skill-card">
+            <h3>AI, DevOps &amp; Delivery</h3>
+            <div class="skill-row"><div class="skill-meta"><span>AI-Native Development (Cursor)</span><span>90%</span></div><div class="bar" data-w="90%"><span></span></div></div>
+            <div class="skill-row"><div class="skill-meta"><span>AI Feature Integration</span><span>85%</span></div><div class="bar" data-w="85%"><span></span></div></div>
+            <div class="skill-row"><div class="skill-meta"><span>Play Store / App Store Deployment</span><span>92%</span></div><div class="bar" data-w="92%"><span></span></div></div>
+            <div class="skill-row"><div class="skill-meta"><span>Git &amp; Version Control</span><span>93%</span></div><div class="bar" data-w="93%"><span></span></div></div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section" id="work">
-      <div class="wrap">
-        <div class="section-head reveal">
+    <section class="section section-border" id="projects">
+      <div class="container-x">
+        <div class="eyebrow">Featured Work</div>
+        <h2 class="section-title">Real apps, shipped and deployed</h2>
+        <p class="lede">A selection of production apps I've built and deployed — including multiple titles currently live on the Google Play Store.</p>
+        <div class="projects-grid">
+          <a class="surface-card project" href="https://play.google.com/store/apps/details?id=com.rayz.bcpl&amp;pcampaignid=web_share" target="_blank" rel="noopener noreferrer">
+            <div class="project-blob" style="background: linear-gradient(135deg, oklch(78% .15 205 / .35), oklch(62% .21 260 / .18);"></div>
+            <div class="project-top">
+              <div class="project-emoji">🤝</div>
+              <span class="chip">Published • Google Play</span>
+            </div>
+            <h3>VIP Club RJ</h3>
+            <p>Cross-platform partner communication for Vivo — mobile and desktop, reliable on low-bandwidth networks, built with Flutter, BLoC, and Clean Architecture.</p>
+            <div class="tags"><span class="chip">Flutter</span><span class="chip">BLoC</span><span class="chip">Clean Arch</span><span class="chip">Desktop</span></div>
+            <div class="project-cta">View on Play Store <span aria-hidden="true">→</span></div>
+          </a>
+
+          <a class="surface-card project" href="https://play.google.com/store/apps/details?id=com.cortech.motorcut&amp;hl=en_IN" target="_blank" rel="noopener noreferrer">
+            <div class="project-blob" style="background: linear-gradient(135deg, oklch(74% .24 322 / .28), oklch(63% .26 304 / .16);"></div>
+            <div class="project-top">
+              <div class="project-emoji">🚗</div>
+              <span class="chip">Published • Google Play</span>
+            </div>
+            <h3>MotorCut</h3>
+            <p>Transforms vehicle photos into marketing creatives via backend AI services and resilient async flows — an AI-powered automotive ads app in Flutter.</p>
+            <div class="tags"><span class="chip">Flutter</span><span class="chip">AI</span><span class="chip">BLoC</span><span class="chip">Async Flows</span></div>
+            <div class="project-cta">View on Play Store <span aria-hidden="true">→</span></div>
+          </a>
+
+          <a class="surface-card project" href="https://play.google.com/store/apps/details?id=com.oppenheimer.ClientAccess&amp;hl=en_IN" target="_blank" rel="noopener noreferrer">
+            <div class="project-blob" style="background: linear-gradient(135deg, oklch(76% .18 163 / .28), oklch(70% .14 182 / .16);"></div>
+            <div class="project-top">
+              <div class="project-emoji">🏦</div>
+              <span class="chip">Published • Google Play</span>
+            </div>
+            <h3>Opco Client Access</h3>
+            <p>Secure banking client with biometric on-device authentication and MVVM + Dio networking — production fintech on the Play Store.</p>
+            <div class="tags"><span class="chip">Flutter</span><span class="chip">Biometrics</span><span class="chip">MVVM</span><span class="chip">Fintech</span></div>
+            <div class="project-cta">View on Play Store <span aria-hidden="true">→</span></div>
+          </a>
+
+          <a class="surface-card project" href="https://play.google.com/store/apps/details?id=com.mobile.fever_fm&amp;hl=en_IN" target="_blank" rel="noopener noreferrer">
+            <div class="project-blob" style="background: linear-gradient(135deg, oklch(83% .19 84 / .28), oklch(70% .21 48 / .16);"></div>
+            <div class="project-top">
+              <div class="project-emoji">📻</div>
+              <span class="chip">Published • Google Play</span>
+            </div>
+            <h3>Fever Radio</h3>
+            <p>Real-time audio streaming for continuous FM and music playback, with stability-focused media handling and a polished Flutter listening experience.</p>
+            <div class="tags"><span class="chip">Flutter</span><span class="chip">Media</span><span class="chip">REST</span><span class="chip">Streaming</span></div>
+            <div class="project-cta">View on Play Store <span aria-hidden="true">→</span></div>
+          </a>
+
+          <a class="surface-card project" href="https://sonoek-patient-dashboard-uvqgj.ondigitalocean.app/" target="_blank" rel="noopener noreferrer">
+            <div class="project-blob" style="background: linear-gradient(135deg, oklch(79% .15 211 / .28), oklch(62% .21 260 / .16);"></div>
+            <div class="project-top">
+              <div class="project-emoji">💊</div>
+              <span class="chip">Featured • Web App</span>
+            </div>
+            <h3>Sonohaler</h3>
+            <p>Healthcare web app for medication tracking, reminders, and provider sharing — built with React, Redux Toolkit, and Tailwind.</p>
+            <div class="tags"><span class="chip">React.js</span><span class="chip">Redux</span><span class="chip">Tailwind</span><span class="chip">Healthcare</span></div>
+            <div class="project-cta">View live project <span aria-hidden="true">→</span></div>
+          </a>
+
+          <a class="surface-card project" href="https://play.google.com/store/apps/details?id=com.rayzinfo.realmtalks&amp;hl=en_IN" target="_blank" rel="noopener noreferrer">
+            <div class="project-blob" style="background: linear-gradient(135deg, oklch(74% .24 322 / .22), oklch(82% .14 205 / .18);"></div>
+            <div class="project-top">
+              <div class="project-emoji">💬</div>
+              <span class="chip">Published • Google Play</span>
+            </div>
+            <h3>Realm Talks</h3>
+            <p>Firebase social app with posts, likes, comments, notifications, and custom animations — delivered with BLoC and a production store release.</p>
+            <div class="tags"><span class="chip">Flutter</span><span class="chip">Firebase</span><span class="chip">BLoC</span><span class="chip">Social</span></div>
+            <div class="project-cta">View on Play Store <span aria-hidden="true">→</span></div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-border" id="experience">
+      <div class="container-x">
+        <div class="eyebrow">Experience</div>
+        <h2 class="section-title">6+ years of shipping mobile products</h2>
+        <div class="timeline">
+          <article class="tl-item left">
+            <span class="tl-dot" aria-hidden="true"></span>
+            <div class="tl-card-wrap">
+              <div class="surface-card tl-card">
+                <div class="tl-date">Oct 2023 — Present</div>
+                <h3>Flutter Developer</h3>
+                <div class="tl-company">Rayz Infotech · Jaipur, India</div>
+                <ul>
+                  <li>Design and deliver scalable Flutter apps for Android, iOS, Web, and Desktop.</li>
+                  <li>Own Clean Architecture with BLoC/MVVM, repository patterns, and Freezed models.</li>
+                  <li>Integrate REST APIs, Firebase, payments, maps, biometrics, and push notifications.</li>
+                  <li>Ship products across healthcare, partner communication, AI, and enterprise workflows.</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+          <article class="tl-item right">
+            <span class="tl-dot" aria-hidden="true"></span>
+            <div class="tl-card-wrap">
+              <div class="surface-card tl-card">
+                <div class="tl-date">Oct 2019 — Sep 2023</div>
+                <h3>Flutter Developer</h3>
+                <div class="tl-company">Digitalries Pvt. Ltd. · India</div>
+                <ul>
+                  <li>Built 10+ production Flutter apps across healthcare, enterprise, and IoT domains.</li>
+                  <li>Standardized Clean Architecture + BLoC + Freezed for maintainable delivery.</li>
+                  <li>Shipped face-recognition attendance with live detection and liveness checks.</li>
+                  <li>Owned full Play Store / App Store release lifecycle from feature work to launch.</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="edu-grid">
+          <div class="surface-card edu-card">
+            <div class="eyebrow" style="letter-spacing:.08em;">Education</div>
+            <h3>Master of Computer Applications (MCA)</h3>
+            <p>Rajasthan Technical University · 2017 · India</p>
+          </div>
+          <div class="surface-card edu-card">
+            <div class="eyebrow" style="letter-spacing:.08em;">Education</div>
+            <h3>Bachelor of Computer Applications (BCA)</h3>
+            <p>University of Rajasthan · 2014 · India</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-border" id="contact">
+      <div class="container-x">
+        <div class="eyebrow">Get in touch</div>
+        <h2 class="section-title">Let's build something people actually use</h2>
+        <p class="lede">Have a mobile app idea, an AI integration in mind, or need a Flutter engineer who ships? I'd love to hear from you.</p>
+        <div class="contact-grid">
+          <a class="surface-card contact-card" href="mailto:choudharyr723@gmail.com">
+            <div class="emoji">✉️</div>
+            <div class="label">Email</div>
+            <div class="value">choudharyr723@gmail.com</div>
+          </a>
+          <a class="surface-card contact-card" href="tel:+917610908574">
+            <div class="emoji">📞</div>
+            <div class="label">Phone</div>
+            <div class="value">+91 76109 08574</div>
+          </a>
+          <a class="surface-card contact-card" href="https://www.linkedin.com/in/rakeshkumarchoudhary92/" target="_blank" rel="noopener noreferrer">
+            <div class="emoji">💼</div>
+            <div class="label">LinkedIn</div>
+            <div class="value">Connect with me</div>
+          </a>
+          <a class="surface-card contact-card" href="https://github.com/choudhryr723" target="_blank" rel="noopener noreferrer">
+            <div class="emoji">💻</div>
+            <div class="label">GitHub</div>
+            <div class="value">choudhryr723</div>
+          </a>
+        </div>
+        <div class="surface-card cta-banner">
           <div>
-            <p class="eyebrow">Work</p>
-            <h2 class="section-title">Things I've built and contributed to</h2>
+            <h3>Based in Jaipur, India</h3>
+            <p>Open to remote roles, freelance projects, and product collaborations.</p>
           </div>
-        </div>
-
-        <a class="work-featured reveal" href="https://sonoek-patient-dashboard-uvqgj.ondigitalocean.app/" target="_blank" rel="noopener noreferrer">
-          <p class="eyebrow">Featured · Web App</p>
-          <h3>Sonohaler — Smart Inhaler</h3>
-          <p>Healthcare web app for medication tracking, reminders, and provider sharing — built with React, Redux Toolkit, and Tailwind.</p>
-          <div class="tags">
-            <span class="tag">React.js</span><span class="tag">Redux</span><span class="tag">Tailwind</span><span class="tag">Axios</span><span class="tag">Healthcare</span>
-          </div>
-          <span class="cta">View live project →</span>
-        </a>
-
-        <div class="work-list">
-          <a class="work-item reveal" href="https://rota.totalcareadvisory.com/login" target="_blank" rel="noopener noreferrer">
-            <span class="work-num">01</span>
-            <div>
-              <h3 class="work-title">Rota Care — Staff Scheduling</h3>
-              <p class="work-desc">AI-assisted rota and workforce scheduling web app for care teams — built with React and Redux.</p>
-              <div class="work-meta" style="margin-top:0.65rem">
-                <span>Web App</span><span>React.js</span><span>Redux</span><span>AI</span>
-              </div>
-            </div>
-            <span class="work-arrow" aria-hidden="true">↗</span>
-          </a>
-
-          <a class="work-item reveal" href="https://play.google.com/store/apps/details?id=com.rayz.bcpl&amp;pcampaignid=web_share" target="_blank" rel="noopener noreferrer">
-            <span class="work-num">02</span>
-            <div>
-              <h3 class="work-title">VIP Club RJ — Channel Partner</h3>
-              <p class="work-desc">Cross-platform partner communication for Vivo — mobile and desktop, reliable on low-bandwidth networks.</p>
-              <div class="work-meta" style="margin-top:0.65rem">
-                <span>Mobile App</span><span>Flutter</span><span>BLoC</span><span>Clean Arch</span>
-              </div>
-            </div>
-            <span class="work-arrow" aria-hidden="true">↗</span>
-          </a>
-
-          <div class="work-item reveal">
-            <span class="work-num">03</span>
-            <div>
-              <h3 class="work-title">AI Farm Management System</h3>
-              <p class="work-desc">Smart farming platform with crop analysis, weather insights, Mapbox geolocation, and AI recommendations.</p>
-              <div class="work-meta" style="margin-top:0.65rem">
-                <span>Mobile App</span><span>Flutter</span><span>Mapbox</span><span>AI</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="work-item reveal">
-            <span class="work-num">04</span>
-            <div>
-              <h3 class="work-title">JANAJAL — Water Delivery</h3>
-              <p class="work-desc">Subscription water supply app with delivery tracking, payments, and maps — Clean Architecture + BLoC.</p>
-              <div class="work-meta" style="margin-top:0.65rem">
-                <span>Mobile App</span><span>Flutter</span><span>Maps</span><span>Payments</span>
-              </div>
-            </div>
-          </div>
-
-          <a class="work-item reveal" href="https://play.google.com/store/apps/details?id=com.oppenheimer.ClientAccess&amp;hl=en_IN" target="_blank" rel="noopener noreferrer">
-            <span class="work-num">05</span>
-            <div>
-              <h3 class="work-title">Opco Client Access — Banking</h3>
-              <p class="work-desc">Secure banking client with biometric on-device authentication and MVVM + Dio networking.</p>
-              <div class="work-meta" style="margin-top:0.65rem">
-                <span>Fintech</span><span>Flutter</span><span>Biometrics</span><span>MVVM</span>
-              </div>
-            </div>
-            <span class="work-arrow" aria-hidden="true">↗</span>
-          </a>
-
-          <a class="work-item reveal" href="https://play.google.com/store/apps/details?id=com.cortech.motorcut&amp;hl=en_IN" target="_blank" rel="noopener noreferrer">
-            <span class="work-num">06</span>
-            <div>
-              <h3 class="work-title">MotorCut — AI Automotive Ads</h3>
-              <p class="work-desc">Transforms vehicle photos into marketing creatives via backend AI services and resilient async flows.</p>
-              <div class="work-meta" style="margin-top:0.65rem">
-                <span>Mobile App</span><span>Flutter</span><span>AI</span><span>BLoC</span>
-              </div>
-            </div>
-            <span class="work-arrow" aria-hidden="true">↗</span>
-          </a>
-
-          <a class="work-item reveal" href="https://play.google.com/store/apps/details?id=com.mobile.fever_fm&amp;hl=en_IN" target="_blank" rel="noopener noreferrer">
-            <span class="work-num">07</span>
-            <div>
-              <h3 class="work-title">Fever Radio — FM Streaming</h3>
-              <p class="work-desc">Real-time audio streaming for continuous FM and music playback with stability-focused media handling.</p>
-              <div class="work-meta" style="margin-top:0.65rem">
-                <span>Mobile App</span><span>Flutter</span><span>Media</span><span>REST</span>
-              </div>
-            </div>
-            <span class="work-arrow" aria-hidden="true">↗</span>
-          </a>
-
-          <a class="work-item reveal" href="https://play.google.com/store/apps/details?id=com.rayzinfo.realmtalks&amp;hl=en_IN" target="_blank" rel="noopener noreferrer">
-            <span class="work-num">08</span>
-            <div>
-              <h3 class="work-title">Realm Talks — Social Media</h3>
-              <p class="work-desc">Firebase social app with posts, likes, comments, notifications, and custom animations via BLoC.</p>
-              <div class="work-meta" style="margin-top:0.65rem">
-                <span>Mobile App</span><span>Flutter</span><span>Firebase</span><span>BLoC</span>
-              </div>
-            </div>
-            <span class="work-arrow" aria-hidden="true">↗</span>
-          </a>
-
-          <div class="work-item reveal">
-            <span class="work-num">09</span>
-            <div>
-              <h3 class="work-title">Digip — Camera Management</h3>
-              <p class="work-desc">Technician workflows for installs, tasks, and complaints — Clean Architecture + Freezed models.</p>
-              <div class="work-meta" style="margin-top:0.65rem">
-                <span>Mobile App</span><span>Flutter</span><span>Firebase</span><span>Freezed</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="work-item reveal">
-            <span class="work-num">10</span>
-            <div>
-              <h3 class="work-title">Face Recognition Attendance</h3>
-              <p class="work-desc">Enterprise attendance with live face detection, liveness checks, and timestamped attendance logs.</p>
-              <div class="work-meta" style="margin-top:0.65rem">
-                <span>Feature Module</span><span>Flutter</span><span>AI</span><span>SQLite</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="education">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <div>
-            <p class="eyebrow">Education</p>
-            <h2 class="section-title">Academic background</h2>
-          </div>
-        </div>
-        <div class="edu-card reveal">
-          <h3 class="edu-degree">Master of Computer Applications (MCA)</h3>
-          <p class="edu-school">Rajasthan Technical University</p>
-          <p class="edu-meta">2017 · India</p>
-        </div>
-        <div class="edu-card reveal">
-          <h3 class="edu-degree">Bachelor of Computer Applications (BCA)</h3>
-          <p class="edu-school">University of Rajasthan</p>
-          <p class="edu-meta">2014 · India</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="contact">
-      <div class="wrap">
-        <div class="contact-box reveal">
-          <p class="eyebrow">Contact</p>
-          <h2 class="section-title">Get In Touch</h2>
-          <p class="contact-lead">
-            Open to discussing senior Flutter roles, cross-platform contracts, or chatting about Clean Architecture, BLoC, and production mobile systems.
-          </p>
-          <div class="contact-actions">
-            <a class="btn btn-primary" href="mailto:choudharyr723@gmail.com">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg>
-              Say Hello
-            </a>
-            <a class="btn btn-outline" href="https://docs.google.com/document/d/1Pu0ArSAZ2Hwm7P7tAhbhov8xY5bhCmfJoWnfa2lHb24/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Download Resume</a>
-          </div>
-          <div class="contact-links">
-            <a href="mailto:choudharyr723@gmail.com">
-              <strong>Email</strong>
-              <span>choudharyr723@gmail.com</span>
-            </a>
-            <a href="https://www.linkedin.com/in/rakeshkumarchoudhary92/" target="_blank" rel="noopener noreferrer">
-              <strong>LinkedIn</strong>
-              <span>rakeshkumarchoudhary92 ↗</span>
-            </a>
-            <a href="https://github.com/choudhryr723" target="_blank" rel="noopener noreferrer">
-              <strong>GitHub</strong>
-              <span>choudhryr723 ↗</span>
-            </a>
-            <a href="tel:+917610908574">
-              <strong>Phone</strong>
-              <span>+91-7610908574</span>
-            </a>
+          <div style="display:flex;flex-wrap:wrap;gap:.75rem;">
+            <a class="btn-primary" href="mailto:choudharyr723@gmail.com">Say Hello</a>
+            <a class="btn-ghost" href="https://docs.google.com/document/d/1Pu0ArSAZ2Hwm7P7tAhbhov8xY5bhCmfJoWnfa2lHb24/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Download Resume</a>
           </div>
         </div>
       </div>
@@ -1065,59 +975,48 @@
   </main>
 
   <footer>
-    <div class="wrap footer-inner">
-      <span>Built with HTML &amp; CSS</span>
-      <span>© <span id="year"></span> Rakesh Kumar Choudhary. All rights reserved.</span>
+    <div class="container-x footer-inner">
+      <div>© <span id="year"></span> Rakesh Kumar Choudhary. Built with Flutter energy ⚡</div>
+      <a href="#top">Back to top ↑</a>
     </div>
   </footer>
 
-<script>
-(function () {
-  document.getElementById('year').textContent = new Date().getFullYear();
+  <script>
+    (function () {
+      document.getElementById("year").textContent = new Date().getFullYear();
 
-  var root = document.documentElement;
-  var saved = localStorage.getItem('theme');
-  if (saved) root.setAttribute('data-theme', saved);
-
-  document.getElementById('theme-toggle').addEventListener('click', function () {
-    var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-    root.setAttribute('data-theme', next);
-    localStorage.setItem('theme', next);
-  });
-
-  var nav = document.getElementById('nav');
-  function onScroll() {
-    nav.classList.toggle('is-scrolled', window.scrollY > 12);
-  }
-  onScroll();
-  window.addEventListener('scroll', onScroll, { passive: true });
-
-  var toggle = document.getElementById('nav-toggle');
-  var menu = document.getElementById('mobile-menu');
-  function setOpen(open) {
-    menu.classList.toggle('is-open', open);
-    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-  }
-  toggle.addEventListener('click', function () {
-    setOpen(!menu.classList.contains('is-open'));
-  });
-  menu.querySelectorAll('a').forEach(function (a) {
-    a.addEventListener('click', function () { setOpen(false); });
-  });
-
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-in');
-        io.unobserve(entry.target);
+      var toggle = document.getElementById("nav-toggle");
+      var menu = document.getElementById("mobile-menu");
+      function setOpen(open) {
+        menu.classList.toggle("open", open);
+        toggle.setAttribute("aria-expanded", open ? "true" : "false");
       }
-    });
-  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      toggle.addEventListener("click", function () {
+        setOpen(!menu.classList.contains("open"));
+      });
+      menu.querySelectorAll("a").forEach(function (a) {
+        a.addEventListener("click", function () { setOpen(false); });
+      });
 
-  document.querySelectorAll('.reveal').forEach(function (el) {
-    io.observe(el);
-  });
-})();
-</script>
+      var bars = document.querySelectorAll(".bar");
+      if ("IntersectionObserver" in window) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.style.setProperty("--w", entry.target.getAttribute("data-w"));
+              entry.target.classList.add("is-in");
+              io.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.35 });
+        bars.forEach(function (bar) { io.observe(bar); });
+      } else {
+        bars.forEach(function (bar) {
+          bar.style.setProperty("--w", bar.getAttribute("data-w"));
+          bar.classList.add("is-in");
+        });
+      }
+    })();
+  </script>
 </body>
 </html>
